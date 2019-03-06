@@ -70,6 +70,8 @@
         android:textColor="#000"
         android:textSize="40sp"
         android:textStyle="bold"
+
+
         app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView"
