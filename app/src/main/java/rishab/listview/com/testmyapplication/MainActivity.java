@@ -14,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         Croller croller = (Croller) findViewById(R.id.croller);
         croller.setIndicatorWidth(10);
         croller.setMin(0);
@@ -22,16 +25,15 @@ public class MainActivity extends AppCompatActivity {
         croller.setMainCircleColor(Color.WHITE);
         croller.setMax(12);
         croller.setStartOffset(45);
-
         croller.setIsContinuous(true);
         croller.setLabelColor(Color.BLACK);
         croller.setProgressPrimaryColor(Color.parseColor("#0B3C49"));
         croller.setIndicatorColor(Color.parseColor("#0B3C49"));
         croller.setProgressSecondaryColor(Color.parseColor("#EEEEEE"));
 
-txt=findViewById(R.id.textView) ;
+         txt=findViewById(R.id.textView) ;
          croller = (Croller) findViewById(R.id.croller);
-        croller.setOnProgressChangedListener(new Croller.onProgressChangedListener() {
+         croller.setOnProgressChangedListener(new Croller.onProgressChangedListener() {
             @Override
             public void onProgressChanged(int progress) {
                 // use the progress
@@ -41,7 +43,7 @@ txt=findViewById(R.id.textView) ;
             }
         });
 
-        croller.setOnCrollerChangeListener(new OnCrollerChangeListener() {
+            croller.setOnCrollerChangeListener(new OnCrollerChangeListener() {
             @Override
             public void onProgressChanged(Croller croller, int progress) {
                 // use the progress
