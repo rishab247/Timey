@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#F7FAFA"
+    android:orientation="horizontal"
+    android:padding="5dp">
+
+  <TextView
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:id="@+id/toneserialnum"
+      android:text="serial numb"
+      android:padding="3dp"
+      android:textSize="15dp"
+      android:textColor="#03C962"
+      />
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:id="@+id/tonename"
+        android:layout_toRightOf="@+id/toneserialnum"
+        android:layout_marginLeft="20dp"
+        android:text="Tone name"
+        android:textSize="30dp"
+        android:textStyle="italic"
+        android:textColor="#E91E63"/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/toneplay"
+        android:background="#E73F09"
+        android:layout_toRightOf="@+id/tonename"
+        android:src="@android:drawable/ic_media_play"
+        android:layout_marginLeft="20dp"/>
+
+</RelativeLayout>
