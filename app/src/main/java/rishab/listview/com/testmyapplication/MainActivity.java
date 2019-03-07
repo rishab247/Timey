@@ -34,18 +34,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 txt=findViewById(R.id.textView2);
 
-
-
-                ObjectAnimator.ofObject(
-                        txt, // Object to animating
-                        "textStyle", // Property to animate
-                        new ArgbEvaluator(), // Interpolation function
-                        startSize, // Start color
-                        endSize // End color
-                ).setDuration(1200) // Duration in milliseconds
-                        .start();
-
-
             }
         });
 
