@@ -39,7 +39,7 @@ public class alarmtonecustomlistviewadapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
       View view=convertView;
-      if(convertView==null)
+      if(view==null)
       {
           view=inflater.inflate(R.layout.alarm_tone_list_row,null);
           TextView toneserialnum=view.findViewById(R.id.toneserialnum);
@@ -53,6 +53,6 @@ public class alarmtonecustomlistviewadapter extends BaseAdapter {
           toneplay.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_background));
 
       }
-        return null;
+        return view;
     }
 }

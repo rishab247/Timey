@@ -7,88 +7,16 @@
     android:background="#fff"
     tools:context=".MainActivity">
 
-    <com.sdsmdg.harjot.crollerTest.Croller
-        android:id="@+id/croller"
-        android:layout_width="0dp"
-        android:layout_height="393dp"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="5dp"
-        app:back_circle_color="#EDEDED"
-        app:indicator_color="#0B3C49"
-        app:indicator_width="10"
-        app:is_continuous="true"
-        app:label_color="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:main_circle_color="#FFFFFF"
-        app:max="1000"
-        app:progress_primary_color="#0B3C49"
-        app:progress_secondary_color="#EEEEEE"
-        app:start_offset="45" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="52dp"
-        android:text="00"
-        android:textColor="#000"
-
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="134dp"
-        android:text="00"
-        android:textColor="#000"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="14dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="3dp"
-        android:text=":"
-        android:textColor="#000"
-        android:textSize="40sp"
-        android:textStyle="bold"
-
-
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
 
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="252dp"
         android:background="@drawable/button_states"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/croller"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/croller" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
