@@ -1,5 +1,7 @@
 package rishab.listview.com.testmyapplication;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -31,8 +33,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 txt=findViewById(R.id.textView2);
-                txt.setTextSize(40);
-                croller.setMax(59);
+
+
+
+                ObjectAnimator.ofObject(
+                        txt, // Object to animating
+                        "textStyle", // Property to animate
+                        new ArgbEvaluator(), // Interpolation function
+                        startSize, // Start color
+                        endSize // End color
+                ).setDuration(1200) // Duration in milliseconds
+                        .start();
+
+
             }
         });
 
