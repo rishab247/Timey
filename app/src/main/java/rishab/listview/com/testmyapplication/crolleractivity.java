@@ -2,6 +2,8 @@ package rishab.listview.com.testmyapplication;
 
 
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +19,7 @@ public class crolleractivity extends AppCompatActivity {
     private TextView txt;
     private Croller croller;
     private Button but;
-
+    int a=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +37,27 @@ public class crolleractivity extends AppCompatActivity {
             }
         });
 
+        final TextView tv ;
+        tv = findViewById(R.id.textView2);
+        tv.setTextSize(12);
+        final float endSize = 40;
+        final int animationDuration = 600; // Animation duration in ms
+
+
+
+
 
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                Intent intent= new Intent(crolleractivity.this,alarmtonelist.class);
-                startActivity(intent);
-
+                tv.setTextSize(12);
+                ValueAnimator animator = ObjectAnimator.ofFloat(tv, "textSize", endSize);
+                animator.setDuration(animationDuration);
+                animator.start();
+                a++;
+                if(a>1){
+                    tv.setTextSize(12);
+                }
             }
         });
     }
