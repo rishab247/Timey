@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,44 +14,44 @@ import java.util.HashMap;
 import java.util.zip.Inflater;
 
 public class alarmtonecustomlistviewadapter extends BaseAdapter {
-    private Context context;
-    private static LayoutInflater inflater=null;
+    private Context mcontext;
     private ArrayList<HashMap<String,String>> Tone;
-    public alarmtonecustomlistviewadapter (Context mcontext, ArrayList<HashMap<String,String>>data) {
+    private static LayoutInflater inflater=null;
+    public alarmtonecustomlistviewadapter (Context context, ArrayList<HashMap<String,String>> data) {
         mcontext = context;
         Tone = data;
         inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
     }
     @Override
     public int getCount() {
-        return 0;
+        return Tone.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return position;
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
       View view=convertView;
-      if(view==null)
+      if(convertView==null)
       {
           view=inflater.inflate(R.layout.alarm_tone_list_row,null);
           TextView toneserialnum=view.findViewById(R.id.toneserialnum);
           TextView tonename=view.findViewById(R.id.tonename);
-          ImageView toneplay=view.findViewById(R.id.toneplay);
+          //Button toneplay=view.findViewById(R.id.playButton);
           HashMap<String,String> tones=new HashMap<>();
           tones=Tone.get(position);
 
           toneserialnum.setText(tones.get("tonesserialnum"));
           tonename.setText(tones.get("tonename"));
-          toneplay.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_background));
+          //toneplay.setImageDrawable(mcontext.getResources().getDrawable(R.drawable.ic_launcher_background));
 
       }
         return view;
