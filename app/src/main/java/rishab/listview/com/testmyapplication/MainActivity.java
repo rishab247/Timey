@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            but = findViewById(R.id.button);
+            but = findViewById(R.id.button12);
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
