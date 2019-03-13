@@ -40,6 +40,7 @@ public class crolleractivity extends AppCompatActivity {
         final TextView tv ;
         tv = findViewById(R.id.textView2);
         tv.setTextSize(12);
+        final float startsize =12;
         final float endSize = 40;
         final int animationDuration = 600; // Animation duration in ms
 
@@ -51,7 +52,8 @@ public class crolleractivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tv.setTextSize(12);
-                ValueAnimator animator = ObjectAnimator.ofFloat(tv, "textSize", endSize);
+
+                ValueAnimator animator = ObjectAnimator.ofFloat(tv, "textSize",startsize, endSize);
                 animator.setDuration(animationDuration);
                 animator.start();
                 a++;
