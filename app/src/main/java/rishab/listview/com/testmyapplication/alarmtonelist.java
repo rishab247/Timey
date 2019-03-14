@@ -1,18 +1,18 @@
 package rishab.listview.com.testmyapplication;
 
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 
 public class alarmtonelist extends AppCompatActivity {
     private TextView textView;
@@ -24,34 +24,34 @@ public class alarmtonelist extends AppCompatActivity {
 
 
 
- @Override
- protected void onCreate(Bundle savedInstanceState) {
-  super.onCreate(savedInstanceState);
-  setContentView(R.layout.activity_alarmtonelist);
-     listView= (ListView) findViewById(R.id.alarmlist);
-     textView=findViewById(R.id.toneserialnum);
-     AlarmnameList = new ArrayList<>();
-     AlarmnameList=getNameList();
-     idImages= new ArrayList<>();
-     idImages=getList();
-     adapter = new customAdapterAlarmtone(alarmtonelist.this,idImages,AlarmnameList);
-     listView.setAdapter(adapter);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_alarmtonelist);
+        listView= (ListView) findViewById(R.id.alarmlist);
+        textView=findViewById(R.id.toneserialnum);
+        AlarmnameList = new ArrayList<>();
+        AlarmnameList=getNameList();
+        idImages= new ArrayList<>();
+        idImages=getList();
+        adapter = new customAdapterAlarmtone(alarmtonelist.this,idImages,AlarmnameList);
+        listView.setAdapter(adapter);
 
 
 
 
-     listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
 
-         public void onItemClick(AdapterView<?> parent, View view , int position, long id) {
-             Toast.makeText(alarmtonelist.this, "Item Id Is" +idImages.get(position), Toast.LENGTH_SHORT).show();
-             ImageView imageView=view.findViewById(R.id.playButton);
-             imageView.setBackgroundResource(android.R.drawable.ic_media_pause);
+            public void onItemClick(AdapterView<?> parent, View view , int position, long id) {
+                Toast.makeText(alarmtonelist.this, "Item Id Is" +idImages.get(position), Toast.LENGTH_SHORT).show();
+                ImageView imageView=view.findViewById(R.id.playButton);
+                imageView.setBackgroundResource(android.R.drawable.ic_media_pause);
 
-         }
-     });
+            }
+        });
 
- }
+    }
 
 
 

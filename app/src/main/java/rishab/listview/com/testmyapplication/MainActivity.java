@@ -15,13 +15,8 @@ import com.sdsmdg.harjot.crollerTest.Croller;
 import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 
 public class MainActivity extends AppCompatActivity {
-        private TextView txt;
-        private Croller croller;
     private Button but;
 
-    final float startSize = 10; // Size in pixels
-    final float endSize = 40;
-    final int animationDuration = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
