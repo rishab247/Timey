@@ -1,59 +1,61 @@
 package rishab.listview.com.testmyapplication;
 
+
+import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.zip.Inflater;
+import java.util.List;
 
-public class alarmtonecustomlistviewadapter extends BaseAdapter {
-    private Context mcontext;
-    private ArrayList<HashMap<String,String>> Tone;
-    private static LayoutInflater inflater=null;
-    public alarmtonecustomlistviewadapter (Context context, ArrayList<HashMap<String,String>> data) {
-        mcontext = context;
-        Tone = data;
-        inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-    }
-    @Override
-    public int getCount() {
-        return Tone.size();
+public class alarmtonecustomlistviewadapter extends ArrayAdapter<Dataitem> {
+
+    Context context;
+    int layoutResourceId;
+     List<Dataitem> data =null;
+
+    public alarmtonecustomlistviewadapter(Context context, int resource, List<Dataitem> objects) {
+        super(context, resource,objects);
+        this.layoutResourceId=resource;
+        this.context=context;
+        this.data=objects;
+
     }
 
-    @Override
-    public Object getItem(int position) {
-        return position;
+    static class DataHolder{
+         TextView alarmtoneName;
+        // TextView toneSerialNum;
+         ImageView buttonImage;
     }
-
+    @NonNull
     @Override
-    public long getItemId(int position) {
-        return position;
-    }
+    public View getView(int position, View convertView,  ViewGroup parent) {
+        DataHolder holder=null;
+        if(convertView==null)
+        {
+            LayoutInflater inflater=((Activity)context).getLayoutInflater();
+            convertView=inflater.inflate(layoutResourceId,parent);
+            holder=new DataHolder();
+            holder.alarmtoneName=(TextView)convertView.findViewById(R.id.tonename);
+           // holder.toneSerialNum=(TextView)convertView.findViewById(R.id.toneserialnum);
+            holder.buttonImage=(ImageView)convertView.findViewById(R.id.playButton);
+                convertView.setTag(holder);
+        }
+        else {
+            holder=(DataHolder)convertView.getTag();
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-      View view=convertView;
-      if(convertView==null)
-      {
-          view=inflater.inflate(R.layout.alarm_tone_list_row,null);
-          TextView toneserialnum=view.findViewById(R.id.toneserialnum);
-          TextView tonename=view.findViewById(R.id.tonename);
-          //Button toneplay=view.findViewById(R.id.playButton);
-          HashMap<String,String> tones=new HashMap<>();
-          tones=Tone.get(position);
+        }
+        Dataitem dataitem=data.get(position);
+        holder.alarmtoneName.setText(dataitem.alarmtoneName);
+       // holder.toneSerialNum.setText(dataitem.alarmToneSerialno);
+        holder.buttonImage.setImageResource(dataitem.resIdImage);
+        return convertView;
 
-          toneserialnum.setText(tones.get("tonesserialnum"));
-          tonename.setText(tones.get("tonename"));
-          //toneplay.setImageDrawable(mcontext.getResources().getDrawable(R.drawable.ic_launcher_background));
-
-      }
-        return view;
     }
 }

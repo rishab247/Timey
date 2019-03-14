@@ -39,7 +39,7 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <Button
+    <ImageView
         android:id="@+id/playButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -47,6 +47,6 @@
         android:layout_marginStart="92dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/tonename"
-        android:background="@android:drawable/ic_media_play" />
+        android:background="@drawable/alarmtone_1" />
 
 </RelativeLayout>
