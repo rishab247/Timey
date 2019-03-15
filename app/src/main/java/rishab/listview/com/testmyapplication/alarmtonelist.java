@@ -83,9 +83,9 @@ public class alarmtonelist extends AppCompatActivity {
         idImages.add("4");
         idImages.add("5");
         idImages.add("6");
-        idImages.add("6");
         idImages.add("7");
         idImages.add("8");
+        idImages.add("9");
         return idImages;
     }
 

@@ -93,9 +93,11 @@
         app:layout_constraintTop_toTopOf="@+id/croller" />
 
 
-    <android.support.design.circularreveal.CircularRevealGridLayout
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:divider="?android:dividerHorizontal"
+        android:showDividers="middle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -117,6 +119,6 @@
             android:background="@color/colorPrimary"
             android:text="SAVE"
             android:textColor="#fff" />
-    </android.support.design.circularreveal.CircularRevealGridLayout>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
