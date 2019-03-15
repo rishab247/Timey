@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list"
     android:layout_width="match_parent"
-android:id="@+id/list"
     android:layout_height="60dp"
     android:background="#ffffff"
     android:orientation="horizontal"
@@ -12,55 +13,51 @@ android:id="@+id/list"
         android:id="@+id/toneserialnum"
         android:layout_width="50dp"
         android:layout_height="60dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:padding="10dp"
         android:text="1"
         android:textColor="#111312"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/serialnumber"
         android:layout_width="50dp"
         android:layout_height="60dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="5dp"
         android:gravity="center"
         android:padding="10dp"
         android:text=""
         android:textColor="#111312"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tonename"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_alignBottom="@+id/toneserialnum"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/toneserialnum"
-        android:layout_toRightOf="@+id/toneserialnum"
         android:gravity="center_vertical"
         android:text="Tone name"
         android:textColor="#0A0A0A"
         android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/toneserialnum"
+        app:layout_constraintLeft_toRightOf="@+id/toneserialnum"
+        app:layout_constraintStart_toEndOf="@+id/toneserialnum"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/playButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/tonename"
-        android:background="@android:drawable/ic_media_play"/>
+        android:layout_marginStart="88dp"
+        android:background="@android:drawable/ic_media_play"
+        app:layout_constraintStart_toEndOf="@+id/tonename"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
