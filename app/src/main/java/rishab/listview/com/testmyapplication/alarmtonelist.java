@@ -90,12 +90,6 @@ public class alarmtonelist extends AppCompatActivity {
         idImages.add("11");
         return idImages;
     }
-
-
-
-
-
-
 void playpause(View view){
     switch (view.getId()) {
         case R.id.list: {
@@ -118,16 +112,7 @@ void playpause(View view){
                 }
             break;
             }
-
-
-
-
         }}
-
-
-
-
-
             public void player ( int a,View view){
                 switch (a) {
                     case 0: {
@@ -293,7 +278,14 @@ void playpause(View view){
             }
 
 
+    @Override
+    protected void onDestroy() {
+        if(mediaPlayer!=null&&mediaPlayer.isPlaying()){
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
 
-
-
+        }
+        super.onDestroy();
     }
+}

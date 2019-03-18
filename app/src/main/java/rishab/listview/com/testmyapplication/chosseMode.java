@@ -7,17 +7,13 @@ import android.os.Bundle;
 public class chosseMode extends AppCompatActivity {
     private chooseModeAdapter modeAdapter;
     private ViewPager modeViewPager;
-    int n=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chosse_mode);
         modeViewPager=findViewById(R.id.modeViewPager);
-
-            modeAdapter=new chooseModeAdapter(this);
-            modeViewPager.setAdapter(modeAdapter);
-
-
+        modeAdapter=new chooseModeAdapter(this);
+        modeViewPager.setAdapter(modeAdapter);
     }
 }

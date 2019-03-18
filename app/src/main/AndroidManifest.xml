@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".chosseMode"></activity>
+        <activity android:name=".chosseMode" />
         <activity
             android:name=".MenuActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

@@ -19,6 +19,7 @@ import android.widget.TextView;
         private Button modeButton;
         Context context;
         LayoutInflater inflater;
+        private LinearLayout linearLayout;
 
         public String[] button_text_mode={
                "math",
@@ -48,17 +49,23 @@ import android.widget.TextView;
 
         @Override
         public boolean isViewFromObject(View view, Object o) {
-            return (view==(LinearLayout)o);
+
+            return (view==o);
         }
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             inflater=(LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+
             View view=inflater.inflate(R.layout.mode_row,container,false);
+            linearLayout=view.findViewById(R.id.linearLayout);
             modeButton=view.findViewById(R.id.modeButton);
+
+          //  LinearLayout linearLayout=view.findViewById(R.id.linearLayout2);
             modeButton.setText(button_text_mode[position]);
             container.addView(view);
             return view;
         }
+
 
         @Override
         public void destroyItem( ViewGroup container, int position, @NonNull Object object) {
