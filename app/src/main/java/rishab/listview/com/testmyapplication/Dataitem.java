@@ -5,7 +5,7 @@ public class Dataitem {
     String alarmtoneName;
     String alarmToneSerialno;
 
-    public Dataitem(int resIdbutton, String alarmtoneName) {
+    public Dataitem(int resIdbutton, String alarmtoneName, String alarmToneSerialno) {
         this.resIdImage = resIdbutton;
         this.alarmtoneName = alarmtoneName;
         this.alarmToneSerialno = alarmToneSerialno;
