@@ -27,12 +27,12 @@ public class crolleractivity extends AppCompatActivity {
     private int startsize =12;
     private int endSize = 40;
     final int animationDuration = 600;
-    int format=12;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.crollerlayout);
-getformat(12);
+
         setcroller();
         txt=findViewById(R.id.crollertext1) ;
         but = findViewById(R.id.crollerbutton);
@@ -50,20 +50,21 @@ getformat(12);
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 if(countclick%2==0){
                   minutes();
                 }
                 else{
-                   hours(format);
+                   hours();
                 }
+
+
                 countclick++;
             }
         });
     }
- public void getformat(int time){
-        format=time;
-
-}
     @Override
     public void onBackPressed() {
         onback();
@@ -109,13 +110,13 @@ getformat(12);
             }
         });
     }
-void hours(int format){
+void hours(){
     croller.setProgress(0);
     Animatetext(txt,endSize,startsize);
     txt=findViewById(R.id.crollertext1);
     Animatetext(txt,startsize,endSize);
     setcroller();
-    croller.setMax(format);
+    croller.setMax(12);
 
     but.setText("Hours");
     croller.setOnProgressChangedListener(new Croller.onProgressChangedListener() {

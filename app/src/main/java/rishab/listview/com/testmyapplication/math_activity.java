@@ -24,16 +24,16 @@ public class math_activity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 switch (progress) {
                     case 1:
-                        mathnotext.setText("20+40");
+                        mathnotext.setText("22+48");
                         break;
                     case 2:
-                        mathnotext.setText("20+309+40");
+                        mathnotext.setText("46+39+43");
                         break;
                     case 3:
-                        mathnotext.setText("29*20+4");
+                        mathnotext.setText("29*20");
                         break;
                     case 5:
-                        mathnotext.setText("45=900+.....");
+                        mathnotext.setText("45*50/23");
                         break;
                 }
             }
