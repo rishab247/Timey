@@ -23,13 +23,14 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="14dp"
-                android:layout_marginTop="19dp" />
+                android:layout_marginTop="19dp"
+                android:background="@android:drawable/ic_lock_idle_alarm" />
 
             <TextView
                 android:id="@+id/detailstitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="52dp"
+                android:layout_marginLeft="23dp"
                 android:layout_marginBottom="31dp"
                 android:layout_toRightOf="@+id/detailsimageid"
                 android:text="title"
@@ -40,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/deailsampm"
-                android:layout_marginLeft="23dp"
+                android:layout_marginLeft="21dp"
                 android:layout_marginTop="21dp"
                 android:layout_toRightOf="@+id/detailsmonday"
                 android:text="TU"
@@ -56,6 +57,7 @@
                 android:layout_toRightOf="@+id/detailstue"
                 android:text="WED"
                 android:textSize="30dp" />
+
             <TextView
                 android:id="@+id/detailsfri"
                 android:layout_width="wrap_content"
@@ -66,6 +68,7 @@
                 android:layout_toRightOf="@+id/detailswed"
                 android:text="FR"
                 android:textSize="30dp" />
+
             <TextView
                 android:id="@+id/detailssat"
                 android:layout_width="wrap_content"
@@ -76,6 +79,7 @@
                 android:layout_toRightOf="@+id/detailsfri"
                 android:text="SA"
                 android:textSize="30dp" />
+
             <TextView
                 android:id="@+id/detailssun"
                 android:layout_width="wrap_content"

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,9 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DETAILS_Activity extends AppCompatActivity {
 
-
+       detailsAdapter adapter;
+       RecyclerView recyclerView;
+       List<details_model> productlist;
 
 
     @Override
@@ -31,6 +38,12 @@ public class DETAILS_Activity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        productlist=new ArrayList<>();
+        recyclerView=findViewById(R.id.detailsrecyclerview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter=new detailsAdapter(this,productlist);
+        recyclerView.setAdapter(adapter);
 
 
     }
