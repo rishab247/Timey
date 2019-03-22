@@ -42,8 +42,8 @@
 
     <SeekBar
         android:id="@+id/seekbarno"
-        android:layout_width="300dp"
-        android:layout_height="51dp"
+        android:layout_width="314dp"
+        android:layout_height="61dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="8dp"
@@ -52,10 +52,10 @@
         android:max="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.466" />
+        app:layout_constraintVertical_bias="0.472" />
 
     <TextView
         android:id="@+id/mathdifficulti"
@@ -77,6 +77,7 @@
     <SeekBar
         android:id="@+id/seekBardifficulti"
         android:layout_width="300dp"
+        
         android:layout_height="51dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="false"
