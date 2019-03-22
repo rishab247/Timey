@@ -236,7 +236,6 @@
                 app:layout_constraintTop_toTopOf="@+id/setalarmrepeat" />
 
             <TextView
-
                 android:id="@+id/setwe"
                 android:layout_width="32dp"
                 android:layout_height="27dp"
