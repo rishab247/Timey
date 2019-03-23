@@ -59,7 +59,8 @@ void cardanimation(){
                     cardView2.setElevation(5);
                 }
             },100);
-
+            Intent intent=new  Intent(MenuActivity.this,chosseMode.class);
+            startActivity(intent);
 
         }
     });

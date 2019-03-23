@@ -27,15 +27,6 @@ import android.widget.TextView;
                 "simple"
         };
 
-
-
-        //list of background colors
-        public int[] lst_BacgroundColors={
-                Color.rgb(55,55,55),
-                Color.rgb(239,85,85),
-                Color.rgb(110,49,89),
-                Color.rgb(1,186,212)
-        };
         public  chooseModeAdapter(Context context)
         {
             this.context=context;
@@ -59,8 +50,6 @@ import android.widget.TextView;
             View view=inflater.inflate(R.layout.mode_row,container,false);
             linearLayout=view.findViewById(R.id.linearLayout);
             modeButton=view.findViewById(R.id.modeButton);
-
-          //  LinearLayout linearLayout=view.findViewById(R.id.linearLayout2);
             modeButton.setText(button_text_mode[position]);
             container.addView(view);
             return view;

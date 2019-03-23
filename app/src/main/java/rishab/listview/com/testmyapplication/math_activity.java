@@ -23,30 +23,31 @@ public class math_activity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 switch (progress) {
-                    case 1:
+                    case 0:
                         mathnotext.setText("22+48");
                         break;
-                    case 2:
+                    case 1:
                         mathnotext.setText("46+39+43");
                         break;
-                    case 3:
+                    case 2:
                         mathnotext.setText("29*20");
                         break;
-                    case 5:
-                        mathnotext.setText("45*50/23");
+                    case 3:
+                        mathnotext.setText("45/23");
+                        break;
+                    case 4:
+                        mathnotext.setText("23*41/21");
                         break;
                 }
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(getApplicationContext(),"hey you are startimg",Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(getApplicationContext(),"hey you are stoped",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -54,19 +55,19 @@ public class math_activity extends AppCompatActivity {
       seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
           @Override
           public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-              mathdifficulty.setText("difficulty level "+seekBar2.getProgress()+"/"+seekBar2.getMax());
+              progress=progress+1;
+
+              mathdifficulty.setText("No of Problems "+progress+"/"+seekBar2.getMax());
 
           }
 
           @Override
           public void onStartTrackingTouch(SeekBar seekBar) {
-              Toast.makeText(getApplicationContext(),"hey you are startimg",Toast.LENGTH_SHORT).show();
 
           }
 
           @Override
           public void onStopTrackingTouch(SeekBar seekBar) {
-              Toast.makeText(getApplicationContext(),"hey you are stoped",Toast.LENGTH_SHORT).show();
 
           }
       });

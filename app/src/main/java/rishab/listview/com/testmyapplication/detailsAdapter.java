@@ -49,9 +49,7 @@ public class detailsAdapter extends RecyclerView.Adapter<detailsAdapter.detailsV
         public detailsViewHolder(View itemView) {
 
             super(itemView);
-            imageView=itemView.findViewById(R.id.detailsimageid);
-            title=itemView.findViewById(R.id.detailstitle);
-            showampm=itemView.findViewById(R.id.deailsampm);
+
 
 
         }
