@@ -23,11 +23,6 @@ private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu;
         cardanimation();
         textselector();
     }
-
-
-
-
-
 void cardanimation(){
     cardView1 = findViewById(R.id.cardView2);
     cardView1.setElevation(5);
