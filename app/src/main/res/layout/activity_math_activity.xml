@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".math_activity">
 
 
@@ -15,13 +16,14 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/math_eg_name"
+        android:textColor="#000"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146" />
+        app:layout_constraintVertical_bias="0.060000002" />
 
     <TextView
         android:id="@+id/mathnotext"
@@ -32,6 +34,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="20+40"
+        android:textColor="#000"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/seekbarno"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,13 +69,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="No of Problems 1/10"
+        android:textColor="#000"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/seekBardifficulti"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.241"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekbarno"
-        app:layout_constraintVertical_bias="0.481" />
+        app:layout_constraintTop_toBottomOf="@+id/seekbarno" />
 
     <SeekBar
         android:id="@+id/seekBardifficulti"
@@ -125,15 +128,14 @@
         android:id="@+id/Difficulties"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="61dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:text="Difficulties Level"
+        android:textColor="#000"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/mathnotext"
         app:layout_constraintStart_toStartOf="@+id/seekbarno"
         app:layout_constraintTop_toBottomOf="@+id/showegmath"
-        app:layout_constraintVertical_bias="0.76" />
+        app:layout_constraintVertical_bias="0.53999996" />
 
 
 </android.support.constraint.ConstraintLayout>

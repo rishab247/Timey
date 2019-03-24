@@ -19,5 +19,5 @@ public class chosseMode extends AppCompatActivity {
         modeViewPager=findViewById(R.id.modeViewPager);
         modeAdapter=new chooseModeAdapter(this);
         modeViewPager.setAdapter(modeAdapter);
-    }
-}
+
+}}

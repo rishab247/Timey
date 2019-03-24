@@ -1,7 +1,6 @@
 package rishab.listview.com.testmyapplication;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
@@ -22,14 +21,24 @@ import android.widget.TextView;
         LayoutInflater inflater;
         private LinearLayout linearLayout;
 
-        public String[] button_text_mode = {
-                "math",
+        public String[] button_text_mode={
+               "math",
                 "shake",
                 "simple"
         };
 
-        public chooseModeAdapter(Context context) {
-            this.context = context;
+
+
+        //list of background colors
+        public int[] lst_BacgroundColors={
+                Color.rgb(55,55,55),
+                Color.rgb(239,85,85),
+                Color.rgb(110,49,89),
+                Color.rgb(1,186,212)
+        };
+        public  chooseModeAdapter(Context context)
+        {
+            this.context=context;
         }
 
 
@@ -41,33 +50,21 @@ import android.widget.TextView;
         @Override
         public boolean isViewFromObject(View view, Object o) {
 
-            return (view == o);
+            return (view==o);
         }
-
         @Override
-        public Object instantiateItem(ViewGroup container, final int position) {
-            inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        public Object instantiateItem(ViewGroup container, int position) {
+            inflater=(LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
 
-            View view = inflater.inflate(R.layout.mode_row, container, false);
-            linearLayout = view.findViewById(R.id.linearLayout);
-            modeButton = view.findViewById(R.id.modeButton);
+            View view=inflater.inflate(R.layout.mode_row,container,false);
+            linearLayout=view.findViewById(R.id.linearLayout);
+            modeButton=view.findViewById(R.id.modeButton);
+
+          //  LinearLayout linearLayout=view.findViewById(R.id.linearLayout2);
             modeButton.setText(button_text_mode[position]);
-            modeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    switch (position)
-                    {
-                        case 1:
-                    Intent intent=new  Intent(chosseMode.this,math_activity.class);
-                    context.startActivity(intent);
-                    break;
-                    }
-                }
-            });
+            container.addView(view);
             return view;
         }
-
-
 
 
         @Override

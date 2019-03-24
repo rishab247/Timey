@@ -1,25 +1,25 @@
 package rishab.listview.com.testmyapplication;
 
+import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class math_activity extends AppCompatActivity {
     private TextView mathnotext,mathdifficulty;
-    private SeekBar seekBar1,seekBar2;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_activity);
-        seekBar1=findViewById(R.id.seekbarno);
+        SeekBar seekBar1 = findViewById(R.id.seekbarno);
         mathnotext=findViewById(R.id.mathnotext);
-        seekBar2=findViewById(R.id.seekBardifficulti);
+        SeekBar seekBar2 = findViewById(R.id.seekBardifficulti);
         mathdifficulty=findViewById(R.id.mathdifficulti);
         seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 switch (progress) {
@@ -53,11 +53,13 @@ public class math_activity extends AppCompatActivity {
         });
 
       seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+          @SuppressLint("SetTextI18n")
           @Override
           public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
               progress=progress+1;
 
-              mathdifficulty.setText("No of Problems "+progress+"/"+seekBar2.getMax());
+
+              mathdifficulty.setText("No of Problems "+progress+"/"+10);
 
           }
 
