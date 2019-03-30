@@ -22,12 +22,12 @@ import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 public class crolleractivity extends AppCompatActivity {
     private TextView txt;
     private Croller croller;
-    private Button but,backbut;
+    private Button but,backbut,savebut;
     int countclick=0;
     private int startsize =12;
     private int endSize = 40;
     final int animationDuration = 600;
-
+    private static String hours1,minutes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +37,16 @@ public class crolleractivity extends AppCompatActivity {
         txt=findViewById(R.id.crollertext1) ;
         but = findViewById(R.id.crollerbutton);
         backbut = findViewById(R.id.crollerback);
-
-
-
+savebut = findViewById(R.id.crollersave);
+savebut.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        MenuActivity m = new MenuActivity();
+        m.setDataHours(hours1);
+        m.setDataMintune(minutes);
+        finish();
+    }
+});
 
         backbut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,17 +57,12 @@ public class crolleractivity extends AppCompatActivity {
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
                 if(countclick%2==0){
                   minutes();
                 }
                 else{
                    hours();
                 }
-
-
                 countclick++;
             }
         });
@@ -76,21 +78,21 @@ public class crolleractivity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                MenuActivity m = new MenuActivity();
+                m.setDataHours(hours1);
+                m.setDataMintune(minutes);
                 finish();
+
             }
         });
+
+
 
         alertDialog.setNegativeButton("No",new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
-            }
-        });
-        alertDialog.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
             }
         });
 
@@ -110,7 +112,9 @@ public class crolleractivity extends AppCompatActivity {
         croller.setOnProgressChangedListener(new Croller.onProgressChangedListener() {
             @Override
             public void onProgressChanged(int progress) { String str;
+
                 str= Integer.toString(progress);
+            minutes = str;
                 txt.setText(str);
             }
         });
@@ -127,7 +131,9 @@ void hours(){
     croller.setOnProgressChangedListener(new Croller.onProgressChangedListener() {
         @Override
         public void onProgressChanged(int progress) { String str;
+
             str= Integer.toString(progress);
+            hours1=str;
             txt.setText(str);
         }
     });

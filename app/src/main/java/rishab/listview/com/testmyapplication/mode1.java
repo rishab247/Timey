@@ -8,7 +8,6 @@ import android.widget.Button;
 
 public class mode1 extends AppCompatActivity {
     private Button mathbutton,mathnext,mathprev;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +18,9 @@ public class mode1 extends AppCompatActivity {
         mathbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+          MenuActivity m =new MenuActivity();
+                m.setDataMode("math");
+
                 Intent intent=new  Intent(mode1.this,math_activity.class);
                 startActivity(intent);
             }

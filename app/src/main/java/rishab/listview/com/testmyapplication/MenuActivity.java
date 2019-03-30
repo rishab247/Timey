@@ -7,8 +7,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Timer;
@@ -16,27 +18,31 @@ import java.util.TimerTask;
 
 public class MenuActivity extends AppCompatActivity {
 private CardView cardView1,cardView2,cardView3,cardView4;
- int mo=0,tu=0,we=0,th=0,fr=0,sa=0,su=0;
+ private  int mo=0,tu=0,we=0,th=0,fr=0,sa=0,su=0;
 private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu;
 private Button savebut,backbut;
+private EditText alarmtitle;
+    private String dataHours= "12";
+    private String dataMintune= "00";
+    private String dataRepeat_days= null;
+    private String dataLabel= null;
+    private String dataTone= "1";
+    private String dataMode= "simple";
+    private String str=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
         cardanimation();
         textselector();
-
         savebut = findViewById(R.id.setsave);
         savebut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new  Intent(MenuActivity.this,DETAILS_Activity.class);
-                startActivity(intent);
+               save();
             }
         });
-
-
         backbut = findViewById(R.id.setback);
         backbut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,12 +50,57 @@ private Button savebut,backbut;
             onback();
             }
         });
+        alarmtitle = findViewById(R.id.setalarmtitle);
 
+        str=alarmtitle.getText().toString();
+    }
 
+    public String getDataHours() {
+        return dataHours;
+    }
 
+    public void setDataHours(String dataHours) {
+        this.dataHours = dataHours;
+    }
 
+    public String getDataMintune() {
+        return dataMintune;
+    }
 
+    public void setDataMintune(String dataMintune) {
+        this.dataMintune = dataMintune;
+    }
 
+    public String getDataRepeat_days() {
+        return dataRepeat_days;
+    }
+
+    public void setDataRepeat_days(String dataRepeat_days) {
+        this.dataRepeat_days = dataRepeat_days;
+    }
+
+    public String getDataLabel() {
+        return dataLabel;
+    }
+
+    public void setDataLabel(String dataLabel) {
+        this.dataLabel = dataLabel;
+    }
+
+    public String getDataTone() {
+        return dataTone;
+    }
+
+    public void setDataTone(String dataTone) {
+        this.dataTone = dataTone;
+    }
+
+    public String getDataMode() {
+        return dataMode;
+    }
+
+    public void setDataMode(String dataMode) {
+        this.dataMode = dataMode;
     }
 
     void onback(){
@@ -60,7 +111,7 @@ private Button savebut,backbut;
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                finish();
+               save();
             }
         });
 
@@ -68,8 +119,7 @@ private Button savebut,backbut;
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent=new  Intent(MenuActivity.this,DETAILS_Activity.class);
-                startActivity(intent);
+                finish();
 
             }
         });
@@ -78,9 +128,39 @@ private Button savebut,backbut;
         alertDialog.setTitle("Save");
         alertDialog.show();
     }
-
-
-
+    public static String concat(String s1, String s2)
+    {
+        return new StringBuilder(s1).append(s2).toString();
+    }
+void repeatingdays()
+{str = " ";
+    if(mo%2==0){
+        str=concat(str,"1 ");
+    }
+    if(tu%2==0){
+        str=concat(str,"2 ");
+    }
+    if(we%2==0){
+        str=concat(str,"3 ");
+    }
+    if(th%2==0){
+        str=concat(str,"4 ");
+    }
+    if(fr%2==0){
+        str=concat(str,"5 ");
+    }
+    if(sa%2==0){
+        str=concat(str,"6 ");
+    }
+    if(su%2==0){
+        str=concat(str,"5 ");
+    }
+}
+void save(){
+        repeatingdays();
+        MenuActivity m = new MenuActivity();
+        m.setDataRepeat_days(str);
+    finish();}
 void cardanimation(){
     cardView1 = findViewById(R.id.cardView2);
     cardView1.setElevation(5);
