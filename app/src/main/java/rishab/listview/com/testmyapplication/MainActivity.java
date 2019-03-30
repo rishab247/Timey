@@ -1,5 +1,6 @@
 package rishab.listview.com.testmyapplication;
 import android.content.Intent;
+import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new  Intent(MainActivity.this,mode1.class);
+                Intent intent=new  Intent(MainActivity.this, mode1.class);
                 startActivity(intent);
 
             }

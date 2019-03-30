@@ -26,6 +26,7 @@ public class mode1 extends AppCompatActivity {
         mathnext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent=new  Intent(mode1.this,mode2.class);
                 startActivity(intent);
             }

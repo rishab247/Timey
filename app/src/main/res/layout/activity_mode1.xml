@@ -55,7 +55,6 @@
         android:background="@drawable/ic_keyboard_arrow_right_black_24dp"
         android:textColor="#000"
         android:textSize="40sp"
-        android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,6 @@
 package rishab.listview.com.testmyapplication;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +27,19 @@ public class alarmtonelist extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
     ImageView  imageView;
+
+    @Override
+    public void onBackPressed() {
+
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        finish();
+        Intent intent=new  Intent(alarmtonelist.this,MenuActivity.class);
+        startActivity(intent);
+
+        super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +70,8 @@ public class alarmtonelist extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     public ArrayList<String> getNameList(){
@@ -287,5 +303,6 @@ void playpause(View view){
 
         }
         super.onDestroy();
+        finish();
     }
 }

@@ -6,4 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".shake">
 
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:divider="?android:dividerHorizontal"
+        android:showDividers="middle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/shakeback"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="BACK"
+            android:textColor="#fff" />
+
+
+        <Button
+            android:id="@+id/shakesave"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="SAVE"
+            android:textColor="#fff" />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -68,7 +68,9 @@ private Button savebut,backbut;
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                finish();
+                Intent intent=new  Intent(MenuActivity.this,DETAILS_Activity.class);
+                startActivity(intent);
+
             }
         });
 

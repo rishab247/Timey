@@ -1,6 +1,7 @@
 package rishab.listview.com.testmyapplication;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,7 +27,15 @@ public class math_activity extends AppCompatActivity {
         mathnotext=findViewById(R.id.mathnotext);
         seekBar2=findViewById(R.id.seekBardifficulti);
         mathdifficulty=findViewById(R.id.mathdifficulti);
-        seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        mathsave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new  Intent(math_activity.this,MenuActivity.class);
+                startActivity(intent);
+
+            }
+        });
+    seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 switch (progress) {
@@ -93,7 +102,9 @@ public class math_activity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                finish();
+                Intent intent=new  Intent(math_activity.this,MenuActivity.class);
+                startActivity(intent);
+
             }
         });
 
