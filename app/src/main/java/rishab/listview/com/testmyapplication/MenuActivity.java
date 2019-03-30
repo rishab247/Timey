@@ -1,11 +1,14 @@
 package rishab.listview.com.testmyapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Timer;
@@ -15,6 +18,7 @@ public class MenuActivity extends AppCompatActivity {
 private CardView cardView1,cardView2,cardView3,cardView4;
  int mo=0,tu=0,we=0,th=0,fr=0,sa=0,su=0;
 private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu;
+private Button savebut,backbut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +26,59 @@ private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu;
 
         cardanimation();
         textselector();
+
+        savebut = findViewById(R.id.setsave);
+        savebut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new  Intent(MenuActivity.this,DETAILS_Activity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        backbut = findViewById(R.id.setback);
+        backbut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            onback();
+            }
+        });
+
+
+
+
+
+
     }
+
+    void onback(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+                this);
+
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        alertDialog.setNegativeButton("No",new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        alertDialog.setMessage("Do you want save changes ?");
+        alertDialog.setTitle("Save");
+        alertDialog.show();
+    }
+
+
+
 void cardanimation(){
     cardView1 = findViewById(R.id.cardView2);
     cardView1.setElevation(5);

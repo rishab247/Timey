@@ -1,5 +1,4 @@
 package rishab.listview.com.testmyapplication;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mydb=new databasehandler(this);
 
-
             but = findViewById(R.id.button12);
         but.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,8 +25,5 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 }

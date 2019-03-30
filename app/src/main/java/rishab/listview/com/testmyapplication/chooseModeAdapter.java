@@ -1,6 +1,7 @@
 package rishab.listview.com.testmyapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
@@ -14,8 +15,9 @@ import android.widget.TextView;
 
 
 
-
     public class chooseModeAdapter extends PagerAdapter {
+        public int pos;
+
         private Button modeButton;
         Context context;
         LayoutInflater inflater;
@@ -53,19 +55,18 @@ import android.widget.TextView;
             return (view==o);
         }
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(ViewGroup container, final int position) {
             inflater=(LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
 
             View view=inflater.inflate(R.layout.mode_row,container,false);
             linearLayout=view.findViewById(R.id.linearLayout);
             modeButton=view.findViewById(R.id.modeButton);
-
+           pos = position;
           //  LinearLayout linearLayout=view.findViewById(R.id.linearLayout2);
             modeButton.setText(button_text_mode[position]);
             container.addView(view);
             return view;
         }
-
 
         @Override
         public void destroyItem( ViewGroup container, int position, @NonNull Object object) {
