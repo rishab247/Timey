@@ -7,17 +7,41 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class shake extends AppCompatActivity {
 
     private Button shakesve,shakeback;
+    private SeekBar shakeseekabar;
+    private TextView shaketextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shake);
+        shaketextView=findViewById(R.id.shaketext);
+        shakeseekabar=findViewById(R.id.seekbarshake);
         shakesve=findViewById(R.id.shakesave);
         shakeback=findViewById(R.id.shakeback);
+        shakeseekabar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progress=progress+50;
+                int max=shakeseekabar.getMax()+50;
+                shaketextView.setText(+progress+"/"+max);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
         shakeback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

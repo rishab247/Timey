@@ -1,5 +1,6 @@
 package rishab.listview.com.testmyapplication;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -78,8 +79,9 @@ public class math_activity extends AppCompatActivity {
           @Override
           public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
               progress=progress+1;
+              int max=seekBar2.getMax()+1;
 
-              mathdifficulty.setText("No of Problems "+progress+"/"+seekBar2.getMax());
+              mathdifficulty.setText("No of Problems "+progress+"/"+max);
 
           }
 
