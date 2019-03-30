@@ -54,7 +54,7 @@ void cardanimation(){
                     cardView2.setElevation(5);
                 }
             },100);
-            Intent intent=new  Intent(MenuActivity.this,chosseMode.class);
+            Intent intent=new  Intent(MenuActivity.this,crolleractivity.class);
             startActivity(intent);
 
         }

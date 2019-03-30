@@ -8,4 +8,9 @@
     <string name="math_eg_name">MATH</string>
     <string name="math_diffcult_level">DIFFICULTY LEVEL</string>
     <string name="math_no">MATH NO</string>
+    <string name="test"><![CDATA[<]]></string>
+    <string name="test1"><![CDATA[>]]></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
