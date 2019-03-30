@@ -70,8 +70,7 @@ public class crolleractivity extends AppCompatActivity {
         onback();
     }
     void onback(){
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-                this);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
@@ -86,6 +85,12 @@ public class crolleractivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
+            }
+        });
+        alertDialog.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
             }
         });
 
