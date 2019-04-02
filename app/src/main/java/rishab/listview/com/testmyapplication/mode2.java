@@ -22,6 +22,8 @@ public class mode2 extends AppCompatActivity {
         shakebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MenuActivity m =new MenuActivity();
+                m.setDataMode("shake");
                 Intent intent=new  Intent(mode2.this,shake.class);
                 startActivity(intent);
             }

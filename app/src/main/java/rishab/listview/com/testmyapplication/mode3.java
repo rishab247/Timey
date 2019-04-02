@@ -21,6 +21,8 @@ public class mode3 extends AppCompatActivity {
         simplebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MenuActivity m =new MenuActivity();
+                m.setDataMode("simple");
                 Intent intent=new  Intent(mode3.this,mode1.class);
                 startActivity(intent);
             }
