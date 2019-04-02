@@ -39,4 +39,5 @@
           android:id="@+id/detailsrecyclerview"
           android:layout_marginTop="60dp"/>
 
+
 </android.support.design.widget.CoordinatorLayout>
