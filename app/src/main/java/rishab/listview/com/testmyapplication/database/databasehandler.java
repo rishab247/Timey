@@ -15,7 +15,8 @@ public class databasehandler extends SQLiteOpenHelper {
             "CREATE TABLE " + constants.TABLE_NAME + "("
                     +constants.KEY_ID+"INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + constants.Hours + " INTEGER,"+ constants.Mintune + " INTEGER,"+ constants.Repeat_days+ " TEXT,"
-                    + constants.Label + " TEXT,"+ constants.Tone + " INTEGER,"+ constants.Mode + " TEXT)";
+                    + constants.Label + " TEXT,"+ constants.Tone + " INTEGER,"+ constants.Mode + " TEXT,"+ constants.no_shake + " INTREGER,"+
+                    constants.diff_math + " INTREGER,"+constants.no_MATH+ " INTREGER"+")";
 
 
 
@@ -36,15 +37,18 @@ public class databasehandler extends SQLiteOpenHelper {
     }
 
 
-    public  boolean insertdata(String hours ,String minutes,String repeatingday,String label,int tone,String mode){
+    public  boolean insertdata(int hours ,int minutes,String repeatingday,String label,int tone,String mode,int noshake,int diffmath,int noofmath){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
         contentValues.put(constants.Hours,hours);
         contentValues.put(constants.Mintune,minutes);
         contentValues.put(constants.Repeat_days,repeatingday);
         contentValues.put(constants.Label,label);
-        contentValues.put(constants.Tone,tone);
+        contentValues.put(constants .Tone,tone);
         contentValues.put(constants.Mode,mode);
+        contentValues.put(constants.no_shake,noshake);
+        contentValues.put(constants.diff_math,diffmath);
+        contentValues.put(constants.no_MATH,noofmath);
         long result= db.insert(TABLE_NAME,null,contentValues);
         if(result==-1){
             return false;

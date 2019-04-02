@@ -16,7 +16,7 @@ public class math_activity extends AppCompatActivity {
     private TextView mathnotext,mathdifficulty;
     private SeekBar seekBar1,seekBar2;
     private Button mathback,mathsave;
-
+    private int  pos=0,noofmath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +31,20 @@ public class math_activity extends AppCompatActivity {
         mathsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MenuActivity m = new MenuActivity();
+                //sending data
+                m.setDatadiffmath(pos);
+                m.setDatanoofmath(noofmath);
                 Intent intent=new  Intent(math_activity.this,MenuActivity.class);
                 startActivity(intent);
 
             }
         });
+
     seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                pos=progress;
                 switch (progress) {
                     case 0:
                         mathnotext.setText("22+48");
@@ -68,6 +74,7 @@ public class math_activity extends AppCompatActivity {
 
             }
         });
+
         mathback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +86,7 @@ public class math_activity extends AppCompatActivity {
           @Override
           public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
               progress=progress+1;
+                noofmath=progress;
               int max=seekBar2.getMax()+1;
 
               mathdifficulty.setText("No of Problems "+progress+"/"+max);
@@ -104,6 +112,10 @@ public class math_activity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                MenuActivity m = new MenuActivity();
+                //sending data
+                m.setDatadiffmath(pos);
+                m.setDatanoofmath(noofmath);
                 Intent intent=new  Intent(math_activity.this,MenuActivity.class);
                 startActivity(intent);
 

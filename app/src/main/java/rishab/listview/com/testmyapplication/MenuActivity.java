@@ -16,19 +16,26 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import rishab.listview.com.testmyapplication.database.databasehandler;
+
 public class MenuActivity extends AppCompatActivity {
+    private databasehandler db;
 private CardView cardView1,cardView2,cardView3,cardView4;
  private  int mo=0,tu=0,we=0,th=0,fr=0,sa=0,su=0;
 private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu;
 private Button savebut,backbut;
 private EditText alarmtitle;
-    private String dataHours= "12";
-    private String dataMintune= "00";
+    private int dataHours= 12;
+    private int dataMintune= 00;
     private String dataRepeat_days= null;
     private String dataLabel= null;
-    private String dataTone= "1";
+    private int dataTone= 1;
     private String dataMode= "simple";
     private String str=null;
+    private int datanoofshakes=0;
+    private int datanoofmath=0;
+    private int datadiffmath=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,21 +60,46 @@ private EditText alarmtitle;
         alarmtitle = findViewById(R.id.setalarmtitle);
 
         str=alarmtitle.getText().toString();
+        setDataLabel(str);
     }
 
-    public String getDataHours() {
+    public int getDatanoofshakes() {
+        return datanoofshakes;
+    }
+
+    public void setDatanoofshakes(int datanoofshakes) {
+        this.datanoofshakes = datanoofshakes;
+    }
+
+    public int getDatanoofmath() {
+        return datanoofmath;
+    }
+
+    public void setDatanoofmath(int datanoofmath) {
+        this.datanoofmath = datanoofmath;
+    }
+
+    public int getDatadiffmath() {
+        return datadiffmath;
+    }
+
+    public void setDatadiffmath(int datadiffmath) {
+        this.datadiffmath = datadiffmath;
+    }
+
+    public int getDataHours() {
         return dataHours;
     }
 
-    public void setDataHours(String dataHours) {
+    public void setDataHours(int dataHours) {
         this.dataHours = dataHours;
     }
 
-    public String getDataMintune() {
+    public int getDataMintune() {
         return dataMintune;
     }
 
-    public void setDataMintune(String dataMintune) {
+    public void setDataMintune(int dataMintune) {
         this.dataMintune = dataMintune;
     }
 
@@ -87,11 +119,11 @@ private EditText alarmtitle;
         this.dataLabel = dataLabel;
     }
 
-    public String getDataTone() {
+    public int getDataTone() {
         return dataTone;
     }
 
-    public void setDataTone(String dataTone) {
+    public void setDataTone(int dataTone) {
         this.dataTone = dataTone;
     }
 
@@ -192,7 +224,7 @@ void cardanimation(){
                     cardView2.setElevation(5);
                 }
             },100);
-            Intent intent=new  Intent(MenuActivity.this,crolleractivity.class);
+            Intent intent=new  Intent(MenuActivity.this,mode1.class);
             startActivity(intent);
 
         }
@@ -350,5 +382,8 @@ textmo =findViewById(R.id.setmo);
 
 
 }
+void savedata(){
+        db.insertdata(getDataHours(),getDataMintune(),getDataRepeat_days(),getDataLabel(),getDataTone(),getDataMode(),getDatanoofshakes(),getDatadiffmath(),getDatanoofmath());
 
+}
 }

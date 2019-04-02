@@ -27,7 +27,7 @@ public class crolleractivity extends AppCompatActivity {
     private int startsize =12;
     private int endSize = 40;
     final int animationDuration = 600;
-    private static String hours1,minutes;
+    private static int hours1,minutes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,7 +114,7 @@ savebut.setOnClickListener(new View.OnClickListener() {
             public void onProgressChanged(int progress) { String str;
 
                 str= Integer.toString(progress);
-            minutes = str;
+            minutes = progress;
                 txt.setText(str);
             }
         });
@@ -132,9 +132,8 @@ void hours(){
         @Override
         public void onProgressChanged(int progress) { String str;
 
-            str= Integer.toString(progress);
-            hours1=str;
-            txt.setText(str);
+
+            txt.setText(hours1);
         }
     });
 }

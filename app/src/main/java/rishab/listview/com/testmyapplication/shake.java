@@ -15,6 +15,7 @@ public class shake extends AppCompatActivity {
     private Button shakesve,shakeback;
     private SeekBar shakeseekabar;
     private TextView shaketextView;
+    private int noofshake;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class shake extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progress=progress+50;
+                noofshake=progress;
                 int max=shakeseekabar.getMax()+50;
                 shaketextView.setText(+progress+"/"+max);
             }
@@ -51,6 +53,8 @@ public class shake extends AppCompatActivity {
         shakesve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MenuActivity m = new MenuActivity();
+                m.setDatanoofshakes(noofshake);
                 Intent intent=new  Intent(shake.this,MenuActivity.class);
                 startActivity(intent);
             }
@@ -65,6 +69,8 @@ public class shake extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                MenuActivity m = new MenuActivity();
+                m.setDatanoofshakes(noofshake);
                 Intent intent=new  Intent(shake.this,MenuActivity.class);
                 startActivity(intent);
 
