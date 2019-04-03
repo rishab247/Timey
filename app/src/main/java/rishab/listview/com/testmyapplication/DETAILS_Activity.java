@@ -83,7 +83,6 @@ public class DETAILS_Activity extends AppCompatActivity {
                // openDialog.setContentView(R.layout.activity_theme);
                 builder.setCancelable(true);
                 builder.setView(R.layout.activity_theme);
-
                 builder.setTitle("THEME");
                 builder.setPositiveButton("CLOSE",new DialogInterface.OnClickListener()
                 {
