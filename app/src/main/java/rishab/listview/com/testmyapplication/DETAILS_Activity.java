@@ -10,9 +10,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AlertDialogLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -63,6 +65,7 @@ public class DETAILS_Activity extends AppCompatActivity {
        recyclerView.setAdapter(adapter);
 
 
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -78,25 +81,91 @@ public class DETAILS_Activity extends AppCompatActivity {
            // case R.id.about:
                 //Toast.makeText(getApplicationContext(),"about",Toast.LENGTH_SHORT).show();
             case R.id.Theme:
-                AlertDialog.Builder builder=new AlertDialog.Builder(this);
-                //final Dialog openDialog=new Dialog(this);
-               // openDialog.setContentView(R.layout.activity_theme);
-                builder.setCancelable(true);
-                builder.setView(R.layout.activity_theme);
-                builder.setTitle("THEME");
-                builder.setPositiveButton("CLOSE",new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                // Get the layout inflater
+                LayoutInflater inflater = (this).getLayoutInflater();
+                // Inflate and set the layout for the dialog
+                // Pass null as the parent view because its going in the
+                // dialog layout
+                builder.setTitle("theme");
 
-                        dialog.dismiss();
+                builder.setCancelable(false);
+               // builder.setIcon(R.drawable.galleryalart);
+                final View dialogView= inflater.inflate(R.layout.activity_theme, null);
+                imageview=dialogView.findViewById(R.id.dialog_image);
+                imageView2=dialogView.findViewById(R.id.dialog_image2);
+                imageView3=dialogView.findViewById(R.id.dialog_image3);
+                imageView4=dialogView.findViewById(R.id.dialog_image4);
+                imageView5=dialogView.findViewById(R.id.dialog_image5);
+                imageView6=dialogView.findViewById(R.id.dialog_image6);
+                imageView7=dialogView.findViewById(R.id.dialog_image7);
+                imageView8=dialogView.findViewById(R.id.dialog_image8);
+                builder.setTitle("THEME");
+                builder.setNegativeButton("CLOSE",new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
                     }
                 });
-                AlertDialog alert=builder.create();
-                alert.show();
+                imageview.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"imageview 1",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                imageView2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"imageview 2",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                imageView3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"imageview 3",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                imageView4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"imageview 4",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                imageView5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"imageview 5",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                imageView6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"imageview 6",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                imageView7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"imageview 7",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                imageView8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"imageview 8",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setView(dialogView);
 
-               Toast.makeText(getApplicationContext(),"sssssss",Toast.LENGTH_SHORT).show();
+                   builder.create();
+                    builder.show();
+
+
+
+
+               return true;
             case R.id.time24:
                 if(item.isChecked()){
                     // If item already checked then unchecked it
@@ -109,7 +178,7 @@ public class DETAILS_Activity extends AppCompatActivity {
                 }
                 return true;
            // case R.id.setting:
-                //Toast.makeText(getApplicationContext(),"setting",Toast.LENGTH_SHORT).show();
+                //
             case R.id.snooze:
                 if(item.isChecked()){
                     // If item already checked then unchecked it
