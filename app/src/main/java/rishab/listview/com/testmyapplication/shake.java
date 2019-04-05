@@ -55,6 +55,7 @@ public class shake extends AppCompatActivity {
             public void onClick(View v) {
                 MenuActivity m = new MenuActivity();
                 m.setDatanoofshakes(noofshake);
+                finish();
                 Intent intent=new  Intent(shake.this,MenuActivity.class);
                 startActivity(intent);
             }
@@ -82,6 +83,8 @@ public class shake extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
+                Intent intent=new  Intent(shake.this,shake.class);
+                startActivity(intent);
             }
         });
 

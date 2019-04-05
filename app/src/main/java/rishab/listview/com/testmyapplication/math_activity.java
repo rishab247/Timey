@@ -116,6 +116,7 @@ public class math_activity extends AppCompatActivity {
                 //sending data
                 m.setDatadiffmath(pos);
                 m.setDatanoofmath(noofmath);
+                finish();
                 Intent intent=new  Intent(math_activity.this,MenuActivity.class);
                 startActivity(intent);
 
@@ -126,8 +127,10 @@ public class math_activity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
                 finish();
+
+                Intent intent=new  Intent(math_activity.this,math_activity.class);
+                startActivity(intent);
             }
         });
 

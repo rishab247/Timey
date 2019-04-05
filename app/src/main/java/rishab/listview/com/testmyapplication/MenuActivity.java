@@ -152,6 +152,10 @@ private EditText alarmtitle;
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
+                Intent intent=new  Intent(MenuActivity.this,MenuActivity.class);
+                startActivity(intent);
+
+
 
             }
         });
@@ -206,6 +210,7 @@ void cardanimation(){
                     cardView1.setElevation(5);
                 }
             },100);
+            finish();
             Intent intent=new  Intent(MenuActivity.this,crolleractivity.class);
             startActivity(intent);
 
@@ -224,7 +229,8 @@ void cardanimation(){
                     cardView2.setElevation(5);
                 }
             },100);
-            Intent intent=new  Intent(MenuActivity.this,mode1.class);
+            finish();
+            Intent intent=new  Intent(MenuActivity.this,button_mode.class);
             startActivity(intent);
 
         }
@@ -256,6 +262,7 @@ void cardanimation(){
                     cardView4.setElevation(5);
                 }
             },100);
+            finish();
             Intent intent=new  Intent(MenuActivity.this,alarmtonelist.class);
             startActivity(intent);
 
