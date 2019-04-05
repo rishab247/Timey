@@ -15,7 +15,7 @@ public class shake extends AppCompatActivity {
     private Button shakesve,shakeback;
     private SeekBar shakeseekabar;
     private TextView shaketextView;
-    private int noofshake;
+    private String noofshake;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,9 @@ public class shake extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progress=progress+50;
-                noofshake=progress;
+                String str = Integer.toString(progress);
+
+                noofshake=str;
                 int max=shakeseekabar.getMax()+50;
                 shaketextView.setText(+progress+"/"+max);
             }

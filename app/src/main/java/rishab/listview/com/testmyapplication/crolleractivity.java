@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sdsmdg.harjot.crollerTest.Croller;
 import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
@@ -23,11 +24,11 @@ public class crolleractivity extends AppCompatActivity {
     private TextView txt;
     private Croller croller;
     private Button but,backbut,savebut;
-    int countclick=0;
+    int countclick=2;
     private int startsize =12;
     private int endSize = 40;
     final int animationDuration = 600;
-    private static int hours1,minutes;
+    private String hours1,minutes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +43,8 @@ savebut.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         MenuActivity m = new MenuActivity();
+        Toast.makeText(getApplicationContext(),hours1+minutes,Toast.LENGTH_LONG).show();
+
         m.setDataHours(hours1);
         m.setDataMintune(minutes);
         finish();
@@ -54,6 +57,8 @@ savebut.setOnClickListener(new View.OnClickListener() {
                 onback();
             }
         });
+        hours();
+
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +84,7 @@ savebut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 MenuActivity m = new MenuActivity();
+                Toast.makeText(getApplicationContext(),hours1+minutes,Toast.LENGTH_LONG).show();
                 m.setDataHours(hours1);
                 m.setDataMintune(minutes);
                 finish();
@@ -114,7 +120,7 @@ savebut.setOnClickListener(new View.OnClickListener() {
             public void onProgressChanged(int progress) { String str;
 
                 str= Integer.toString(progress);
-            minutes = progress;
+            minutes = str;
                 txt.setText(str);
             }
         });
@@ -132,8 +138,9 @@ void hours(){
         @Override
         public void onProgressChanged(int progress) { String str;
 
-
-            txt.setText(hours1);
+            str = Integer.toString(progress);
+            hours1 = str;
+            txt.setText(str);
         }
     });
 }

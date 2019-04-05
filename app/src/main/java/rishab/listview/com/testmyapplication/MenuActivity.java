@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,16 +26,16 @@ private CardView cardView1,cardView2,cardView3,cardView4;
 private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu;
 private Button savebut,backbut;
 private EditText alarmtitle;
-    private int dataHours= 12;
-    private int dataMintune= 00;
-    private String dataRepeat_days= null;
-    private String dataLabel= null;
-    private int dataTone= 1;
+    private String dataHours= "12";
+    private String dataMintune= "00";
+    private String dataRepeat_days= "mo";
+    private String dataLabel= "hello";
+    private String dataTone= "1";
     private String dataMode= "simple";
-    private String str=null;
-    private int datanoofshakes=0;
-    private int datanoofmath=0;
-    private int datadiffmath=0;
+    private String str=" ",str1=null;
+    private String datanoofshakes="0";
+    private String datanoofmath="0";
+    private String datadiffmath="0";
 
 
     @Override
@@ -43,6 +44,8 @@ private EditText alarmtitle;
         setContentView(R.layout.activity_menu);
         cardanimation();
         textselector();
+      db= new databasehandler(this);
+      db.getWritableDatabase();
         savebut = findViewById(R.id.setsave);
         savebut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,47 +62,45 @@ private EditText alarmtitle;
         });
         alarmtitle = findViewById(R.id.setalarmtitle);
 
-        str=alarmtitle.getText().toString();
-        setDataLabel(str);
     }
 
-    public int getDatanoofshakes() {
+    public String getDatanoofshakes() {
         return datanoofshakes;
     }
 
-    public void setDatanoofshakes(int datanoofshakes) {
+    public void setDatanoofshakes(String datanoofshakes) {
         this.datanoofshakes = datanoofshakes;
     }
 
-    public int getDatanoofmath() {
+    public String getDatanoofmath() {
         return datanoofmath;
     }
 
-    public void setDatanoofmath(int datanoofmath) {
+    public void setDatanoofmath(String datanoofmath) {
         this.datanoofmath = datanoofmath;
     }
 
-    public int getDatadiffmath() {
+    public String getDatadiffmath() {
         return datadiffmath;
     }
 
-    public void setDatadiffmath(int datadiffmath) {
+    public void setDatadiffmath(String datadiffmath) {
         this.datadiffmath = datadiffmath;
     }
 
-    public int getDataHours() {
+    public String getDataHours() {
         return dataHours;
     }
 
-    public void setDataHours(int dataHours) {
+    public void setDataHours(String dataHours) {
         this.dataHours = dataHours;
     }
 
-    public int getDataMintune() {
+    public String getDataMintune() {
         return dataMintune;
     }
 
-    public void setDataMintune(int dataMintune) {
+    public void setDataMintune(String dataMintune) {
         this.dataMintune = dataMintune;
     }
 
@@ -119,11 +120,11 @@ private EditText alarmtitle;
         this.dataLabel = dataLabel;
     }
 
-    public int getDataTone() {
+    public String getDataTone() {
         return dataTone;
     }
 
-    public void setDataTone(int dataTone) {
+    public void setDataTone(String dataTone) {
         this.dataTone = dataTone;
     }
 
@@ -165,33 +166,37 @@ private EditText alarmtitle;
         return new StringBuilder(s1).append(s2).toString();
     }
 void repeatingdays()
-{str = " ";
-    if(mo%2==0){
-        str=concat(str,"1 ");
+{
+    if(mo%2!=0){
+        str=concat(str,"1");
     }
-    if(tu%2==0){
-        str=concat(str,"2 ");
+    if(tu%2!=0){
+        str=concat(str,"2");
     }
-    if(we%2==0){
-        str=concat(str,"3 ");
+    if(we%2!=0){
+        str=concat(str,"3");
     }
-    if(th%2==0){
-        str=concat(str,"4 ");
+    if(th%2!=0){
+        str=concat(str,"4");
     }
-    if(fr%2==0){
-        str=concat(str,"5 ");
+    if(fr%2!=0){
+        str=concat(str,"5");
     }
-    if(sa%2==0){
-        str=concat(str,"6 ");
+    if(sa%2!=0){
+        str=concat(str,"6");
     }
-    if(su%2==0){
-        str=concat(str,"5 ");
+    if(su%2!=0){
+        str=concat(str,"7");
     }
 }
 void save(){
+
+    str1=alarmtitle.getText().toString();
+    setDataLabel(str1);
         repeatingdays();
-        MenuActivity m = new MenuActivity();
-        m.setDataRepeat_days(str);
+       setDataRepeat_days(str);
+       savedata();
+       Toast.makeText(getApplicationContext(),getDataHours()+getDataMintune(),Toast.LENGTH_SHORT).show();
     finish();}
 void cardanimation(){
     cardView1 = findViewById(R.id.cardView2);
@@ -224,7 +229,7 @@ void cardanimation(){
                     cardView2.setElevation(5);
                 }
             },100);
-            Intent intent=new  Intent(MenuActivity.this,mode1.class);
+            Intent intent=new  Intent(MenuActivity.this,button_mode.class);
             startActivity(intent);
 
         }
@@ -383,7 +388,8 @@ textmo =findViewById(R.id.setmo);
 
 }
 void savedata(){
-        db.insertdata(getDataHours(),getDataMintune(),getDataRepeat_days(),getDataLabel(),getDataTone(),getDataMode(),getDatanoofshakes(),getDatadiffmath(),getDatanoofmath());
+       db.insertdata(getDataHours(),getDataMintune(),getDataRepeat_days(),getDataLabel(),getDataTone(),getDataMode(),getDatanoofshakes(),getDatadiffmath(),getDatanoofmath());
+       db.close();
 
 }
 }

@@ -13,10 +13,10 @@ import static rishab.listview.com.testmyapplication.database.constants.TABLE_NAM
 public class databasehandler extends SQLiteOpenHelper {
     public static final String CREATE_TABLE =
             "CREATE TABLE " + constants.TABLE_NAME + "("
-                    +constants.KEY_ID+"INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + constants.Hours + " INTEGER,"+ constants.Mintune + " INTEGER,"+ constants.Repeat_days+ " TEXT,"
-                    + constants.Label + " TEXT,"+ constants.Tone + " INTEGER,"+ constants.Mode + " TEXT,"+ constants.no_shake + " INTREGER,"+
-                    constants.diff_math + " INTREGER,"+constants.no_MATH+ " INTREGER"+")";
+                    +constants.KEY_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + constants.Hours + " TEXT,"+ constants.Mintune + " TEXT,"+ constants.Repeat_days+ " TEXT,"
+                    + constants.Label + " TEXT,"+ constants.Tone + " TEXT,"+ constants.Mode + " TEXT,"+ constants.no_shake + " TEXT,"+
+                    constants.diff_math + " TEXT,"+constants.no_MATH+ " TEXT"+")";
 
 
 
@@ -37,7 +37,7 @@ public class databasehandler extends SQLiteOpenHelper {
     }
 
 
-    public  boolean insertdata(int hours ,int minutes,String repeatingday,String label,int tone,String mode,int noshake,int diffmath,int noofmath){
+    public  boolean insertdata(String hours ,String minutes,String repeatingday,String label,String tone,String mode,String noshake,String diffmath,String noofmath){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
         contentValues.put(constants.Hours,hours);
