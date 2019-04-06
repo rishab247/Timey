@@ -2,7 +2,9 @@ package rishab.listview.com.testmyapplication;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,16 +28,17 @@ private CardView cardView1,cardView2,cardView3,cardView4;
 private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu;
 private Button savebut,backbut;
 private EditText alarmtitle;
-    private int dataHours= 12;
-    private int dataMintune= 00;
-    private String dataRepeat_days= null;
-    private String dataLabel= null;
-    private int dataTone= 1;
+
+    private String dataHours= "12";
+    private String dataMintune= "00";
+    private String dataRepeat_days= "mo";
+    private String dataLabel= "hello";
+    private String dataTone= "1";
     private String dataMode= "simple";
-    private String str=null;
-    private int datanoofshakes=0;
-    private int datanoofmath=0;
-    private int datadiffmath=0;
+    private String str=" ",str1=null;
+    private String datanoofshakes="0";
+    private String datanoofmath="0";
+    private String datadiffmath="0";
 
 
     @Override
@@ -43,6 +47,8 @@ private EditText alarmtitle;
         setContentView(R.layout.activity_menu);
         cardanimation();
         textselector();
+      db= new databasehandler(this);
+      db.getWritableDatabase();
         savebut = findViewById(R.id.setsave);
         savebut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,85 +65,83 @@ private EditText alarmtitle;
         });
         alarmtitle = findViewById(R.id.setalarmtitle);
 
-        str=alarmtitle.getText().toString();
-        setDataLabel(str);
     }
 
-    public int getDatanoofshakes() {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                dataHours = data.getStringExtra("hours");
+                dataMintune= data.getStringExtra("minutes");
+            }
+        }
+        if(requestCode ==2){
+            if(resultCode==RESULT_OK){
+                dataMode = data.getStringExtra("mode");
+                if(dataMode.equals("math")){
+                    datadiffmath = data.getStringExtra("diffmath");
+                    datanoofmath = data.getStringExtra("noofmath");
+
+
+                }
+                else if(dataMode.equals("shake")){
+                    datanoofshakes = data.getStringExtra("noofshake");
+
+
+                }
+            }
+        }
+    }
+
+    public String getDatanoofshakes() {
         return datanoofshakes;
     }
 
-    public void setDatanoofshakes(int datanoofshakes) {
-        this.datanoofshakes = datanoofshakes;
-    }
 
-    public int getDatanoofmath() {
+    public String getDatanoofmath() {
         return datanoofmath;
     }
 
-    public void setDatanoofmath(int datanoofmath) {
-        this.datanoofmath = datanoofmath;
-    }
 
-    public int getDatadiffmath() {
+    public String getDatadiffmath() {
         return datadiffmath;
     }
 
-    public void setDatadiffmath(int datadiffmath) {
-        this.datadiffmath = datadiffmath;
-    }
 
-    public int getDataHours() {
+    public String getDataHours() {
         return dataHours;
     }
 
-    public void setDataHours(int dataHours) {
-        this.dataHours = dataHours;
-    }
 
-    public int getDataMintune() {
+    public String getDataMintune() {
         return dataMintune;
     }
 
-    public void setDataMintune(int dataMintune) {
-        this.dataMintune = dataMintune;
-    }
+
 
     public String getDataRepeat_days() {
         return dataRepeat_days;
     }
 
-    public void setDataRepeat_days(String dataRepeat_days) {
-        this.dataRepeat_days = dataRepeat_days;
-    }
 
     public String getDataLabel() {
         return dataLabel;
     }
 
-    public void setDataLabel(String dataLabel) {
-        this.dataLabel = dataLabel;
-    }
 
-    public int getDataTone() {
+    public String getDataTone() {
         return dataTone;
     }
 
-    public void setDataTone(int dataTone) {
-        this.dataTone = dataTone;
-    }
 
     public String getDataMode() {
         return dataMode;
     }
 
-    public void setDataMode(String dataMode) {
-        this.dataMode = dataMode;
-    }
 
     void onback(){
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-                this);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
@@ -152,10 +156,6 @@ private EditText alarmtitle;
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
-                Intent intent=new  Intent(MenuActivity.this,MenuActivity.class);
-                startActivity(intent);
-
-
 
             }
         });
@@ -169,33 +169,42 @@ private EditText alarmtitle;
         return new StringBuilder(s1).append(s2).toString();
     }
 void repeatingdays()
-{str = " ";
-    if(mo%2==0){
-        str=concat(str,"1 ");
+{
+    if(mo%2!=0){
+        str=concat(str,"1");
     }
-    if(tu%2==0){
-        str=concat(str,"2 ");
+    if(tu%2!=0){
+        str=concat(str,"2");
     }
-    if(we%2==0){
-        str=concat(str,"3 ");
+    if(we%2!=0){
+        str=concat(str,"3");
     }
-    if(th%2==0){
-        str=concat(str,"4 ");
+    if(th%2!=0){
+        str=concat(str,"4");
     }
-    if(fr%2==0){
-        str=concat(str,"5 ");
+    if(fr%2!=0){
+        str=concat(str,"5");
     }
-    if(sa%2==0){
-        str=concat(str,"6 ");
+    if(sa%2!=0){
+        str=concat(str,"6");
     }
-    if(su%2==0){
-        str=concat(str,"5 ");
+    if(su%2!=0){
+        str=concat(str,"7");
     }
 }
 void save(){
+
+    str1=alarmtitle.getText().toString();
+    dataLabel=str1;
         repeatingdays();
-        MenuActivity m = new MenuActivity();
-        m.setDataRepeat_days(str);
+       dataRepeat_days=str;
+       savedata();
+   /////
+    Cursor res = db.getdata();
+    int a=res.getCount();
+    String str = Integer.toString(a);
+    Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
+   /////`
     finish();}
 void cardanimation(){
     cardView1 = findViewById(R.id.cardView2);
@@ -210,9 +219,8 @@ void cardanimation(){
                     cardView1.setElevation(5);
                 }
             },100);
-            finish();
             Intent intent=new  Intent(MenuActivity.this,crolleractivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,1);
 
         }
     });
@@ -229,9 +237,8 @@ void cardanimation(){
                     cardView2.setElevation(5);
                 }
             },100);
-            finish();
             Intent intent=new  Intent(MenuActivity.this,button_mode.class);
-            startActivity(intent);
+            startActivityForResult(intent,2);
 
         }
     });
@@ -390,7 +397,9 @@ textmo =findViewById(R.id.setmo);
 
 }
 void savedata(){
-        db.insertdata(getDataHours(),getDataMintune(),getDataRepeat_days(),getDataLabel(),getDataTone(),getDataMode(),getDatanoofshakes(),getDatadiffmath(),getDatanoofmath());
+
+       db.insertdata(getDataHours(),getDataMintune(),getDataRepeat_days(),getDataLabel(),getDataTone(),getDataMode(),getDatanoofshakes(),getDatadiffmath(),getDatanoofmath());
+       db.close();
 
 }
 }

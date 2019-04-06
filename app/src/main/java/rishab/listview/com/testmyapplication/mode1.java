@@ -19,7 +19,6 @@ public class mode1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
           MenuActivity m =new MenuActivity();
-                m.setDataMode("math");
 
                 Intent intent=new  Intent(mode1.this,math_activity.class);
                 startActivity(intent);

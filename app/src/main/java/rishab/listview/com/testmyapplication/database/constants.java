@@ -1,7 +1,7 @@
 package rishab.listview.com.testmyapplication.database;
 
 public class constants {
-    public static final String DATABASE_NAME= "Alarm.db";
+    public static final String DATABASE_NAME= "Alarm1xxnn01.db";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME= "alarms";
     public static final String Hours= "hours";
