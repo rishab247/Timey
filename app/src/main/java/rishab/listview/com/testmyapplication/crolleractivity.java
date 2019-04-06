@@ -42,11 +42,13 @@ savebut = findViewById(R.id.crollersave);
 savebut.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        MenuActivity m = new MenuActivity();
+
         Toast.makeText(getApplicationContext(),hours1+minutes,Toast.LENGTH_LONG).show();
 
-        m.setDataHours(hours1);
-        m.setDataMintune(minutes);
+        Intent intent = new Intent();
+        intent.putExtra("hours", hours1);
+        intent.putExtra("minutes", minutes);
+        setResult(RESULT_OK, intent);
         finish();
     }
 });
@@ -83,10 +85,10 @@ savebut.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MenuActivity m = new MenuActivity();
-                Toast.makeText(getApplicationContext(),hours1+minutes,Toast.LENGTH_LONG).show();
-                m.setDataHours(hours1);
-                m.setDataMintune(minutes);
+                Intent intent = new Intent();
+                intent.putExtra("hours", hours1);
+                intent.putExtra("minutes", minutes);
+                setResult(RESULT_OK, intent);
                 finish();
 
             }
@@ -99,6 +101,8 @@ savebut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
+                Intent intent=new  Intent(crolleractivity.this,MenuActivity.class);
+                startActivity(intent);
             }
         });
 

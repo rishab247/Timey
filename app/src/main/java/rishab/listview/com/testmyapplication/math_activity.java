@@ -31,10 +31,11 @@ public class math_activity extends AppCompatActivity {
         mathsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MenuActivity m = new MenuActivity();
-                //sending data
-                m.setDatadiffmath(pos);
-                m.setDatanoofmath(noofmath);
+                Intent intent = new Intent();
+                intent.putExtra("mode", "math");
+                intent.putExtra("diffmath", pos);
+                intent.putExtra("noofmath",noofmath);
+                setResult(RESULT_OK, intent);
                 finish();
 
             }
@@ -113,12 +114,12 @@ public class math_activity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MenuActivity m = new MenuActivity();
-                //sending data
-                m.setDatadiffmath(pos);
-                m.setDatanoofmath(noofmath);
-                Intent intent=new  Intent(math_activity.this,MenuActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent();
+                intent.putExtra("mode", "math");
+                intent.putExtra("diffmath", pos);
+                intent.putExtra("noofmath",noofmath);
+                setResult(RESULT_OK, intent);
+                finish();
 
             }
         });

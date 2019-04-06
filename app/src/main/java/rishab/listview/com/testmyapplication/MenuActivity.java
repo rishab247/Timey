@@ -2,7 +2,9 @@ package rishab.listview.com.testmyapplication;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ private CardView cardView1,cardView2,cardView3,cardView4;
 private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu;
 private Button savebut,backbut;
 private EditText alarmtitle;
+
     private String dataHours= "12";
     private String dataMintune= "00";
     private String dataRepeat_days= "mo";
@@ -64,81 +67,81 @@ private EditText alarmtitle;
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                dataHours = data.getStringExtra("hours");
+                dataMintune= data.getStringExtra("minutes");
+            }
+        }
+        if(requestCode ==2){
+            if(resultCode==RESULT_OK){
+                dataMode = data.getStringExtra("mode");
+                if(dataMode.equals("math")){
+                    datadiffmath = data.getStringExtra("diffmath");
+                    datanoofmath = data.getStringExtra("noofmath");
+
+
+                }
+                else if(dataMode.equals("shake")){
+                    datanoofshakes = data.getStringExtra("noofshake");
+
+
+                }
+            }
+        }
+    }
+
     public String getDatanoofshakes() {
         return datanoofshakes;
     }
 
-    public void setDatanoofshakes(String datanoofshakes) {
-        this.datanoofshakes = datanoofshakes;
-    }
 
     public String getDatanoofmath() {
         return datanoofmath;
     }
 
-    public void setDatanoofmath(String datanoofmath) {
-        this.datanoofmath = datanoofmath;
-    }
 
     public String getDatadiffmath() {
         return datadiffmath;
     }
 
-    public void setDatadiffmath(String datadiffmath) {
-        this.datadiffmath = datadiffmath;
-    }
 
     public String getDataHours() {
         return dataHours;
     }
 
-    public void setDataHours(String dataHours) {
-        this.dataHours = dataHours;
-    }
 
     public String getDataMintune() {
         return dataMintune;
     }
 
-    public void setDataMintune(String dataMintune) {
-        this.dataMintune = dataMintune;
-    }
+
 
     public String getDataRepeat_days() {
         return dataRepeat_days;
     }
 
-    public void setDataRepeat_days(String dataRepeat_days) {
-        this.dataRepeat_days = dataRepeat_days;
-    }
 
     public String getDataLabel() {
         return dataLabel;
     }
 
-    public void setDataLabel(String dataLabel) {
-        this.dataLabel = dataLabel;
-    }
 
     public String getDataTone() {
         return dataTone;
     }
 
-    public void setDataTone(String dataTone) {
-        this.dataTone = dataTone;
-    }
 
     public String getDataMode() {
         return dataMode;
     }
 
-    public void setDataMode(String dataMode) {
-        this.dataMode = dataMode;
-    }
 
     void onback(){
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-                this);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
@@ -192,11 +195,16 @@ void repeatingdays()
 void save(){
 
     str1=alarmtitle.getText().toString();
-    setDataLabel(str1);
+    dataLabel=str1;
         repeatingdays();
-       setDataRepeat_days(str);
+       dataRepeat_days=str;
        savedata();
-       Toast.makeText(getApplicationContext(),getDataHours()+getDataMintune(),Toast.LENGTH_SHORT).show();
+   /////
+    Cursor res = db.getdata();
+    int a=res.getCount();
+    String str = Integer.toString(a);
+    Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
+   /////`
     finish();}
 void cardanimation(){
     cardView1 = findViewById(R.id.cardView2);
@@ -212,7 +220,7 @@ void cardanimation(){
                 }
             },100);
             Intent intent=new  Intent(MenuActivity.this,crolleractivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,1);
 
         }
     });
@@ -230,7 +238,7 @@ void cardanimation(){
                 }
             },100);
             Intent intent=new  Intent(MenuActivity.this,button_mode.class);
-            startActivity(intent);
+            startActivityForResult(intent,2);
 
         }
     });
@@ -261,6 +269,7 @@ void cardanimation(){
                     cardView4.setElevation(5);
                 }
             },100);
+            finish();
             Intent intent=new  Intent(MenuActivity.this,alarmtonelist.class);
             startActivity(intent);
 
@@ -388,6 +397,7 @@ textmo =findViewById(R.id.setmo);
 
 }
 void savedata(){
+
        db.insertdata(getDataHours(),getDataMintune(),getDataRepeat_days(),getDataLabel(),getDataTone(),getDataMode(),getDatanoofshakes(),getDatadiffmath(),getDatanoofmath());
        db.close();
 

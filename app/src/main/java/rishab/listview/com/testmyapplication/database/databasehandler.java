@@ -2,6 +2,7 @@ package rishab.listview.com.testmyapplication.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.NoCopySpan;
@@ -38,6 +39,7 @@ public class databasehandler extends SQLiteOpenHelper {
 
 
     public  boolean insertdata(String hours ,String minutes,String repeatingday,String label,String tone,String mode,String noshake,String diffmath,String noofmath){
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
         contentValues.put(constants.Hours,hours);
@@ -57,4 +59,11 @@ public class databasehandler extends SQLiteOpenHelper {
             return true;
         }
     }
+    public Cursor getdata(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor ros = db.rawQuery("select * from "+TABLE_NAME,null);
+return ros;
+    }
+
 }
+
