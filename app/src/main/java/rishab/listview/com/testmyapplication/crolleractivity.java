@@ -135,7 +135,7 @@ void hours(){
     txt=findViewById(R.id.crollertext1);
     Animatetext(txt,startsize,endSize);
     setcroller();
-    croller.setMax(12);
+    croller.setMax(24);
 
     but.setText("Hours");
     croller.setOnProgressChangedListener(new Croller.onProgressChangedListener() {
@@ -171,7 +171,7 @@ void Animatetext(TextView tv,int startsize,int endSize){
         croller.setLabel("");
         croller.setBackCircleColor(Color.parseColor("#EDEDED"));
         croller.setMainCircleColor(Color.WHITE);
-        croller.setMax(12);
+        croller.setMax(24);
         croller.setStartOffset(45);
         croller.setIsContinuous(true);
         croller.setLabelColor(Color.BLACK);

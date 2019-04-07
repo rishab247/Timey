@@ -25,11 +25,11 @@ public class MenuActivity extends AppCompatActivity {
     private databasehandler db;
 private CardView cardView1,cardView2,cardView3,cardView4;
  private  int mo=0,tu=0,we=0,th=0,fr=0,sa=0,su=0;
-private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu;
+private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu,texttime;
 private Button savebut,backbut;
 private EditText alarmtitle;
 
-    private String dataHours= "12";
+    private String dataHours= "2";
     private String dataMintune= "00";
     private String dataRepeat_days= "mo";
     private String dataLabel= "hello";
@@ -56,6 +56,8 @@ private EditText alarmtitle;
                save();
             }
         });
+        texttime = findViewById(R.id.settime);
+
         backbut = findViewById(R.id.setback);
         backbut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +66,7 @@ private EditText alarmtitle;
             }
         });
         alarmtitle = findViewById(R.id.setalarmtitle);
+        updateactivity();
 
     }
 
@@ -204,8 +207,9 @@ void save(){
     int a=res.getCount();
     String str = Integer.toString(a);
     Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
-   /////`
-    finish();}
+   /////
+    finish();
+    }
 void cardanimation(){
     cardView1 = findViewById(R.id.cardView2);
     cardView1.setElevation(5);
@@ -221,6 +225,7 @@ void cardanimation(){
             },100);
             Intent intent=new  Intent(MenuActivity.this,crolleractivity.class);
             startActivityForResult(intent,1);
+
 
         }
     });
@@ -277,8 +282,15 @@ void cardanimation(){
     });
 }
 
-void textselector() {
-textmo =findViewById(R.id.setmo);
+    @Override
+    public void recreate() {
+        super.recreate();
+        this.onCreate(null);
+    }
+
+
+    void textselector() {
+    textmo =findViewById(R.id.setmo);
     texttu =findViewById(R.id.settu);
     textwe =findViewById(R.id.setwe);
     textth =findViewById(R.id.setth);
@@ -401,5 +413,10 @@ void savedata(){
        db.insertdata(getDataHours(),getDataMintune(),getDataRepeat_days(),getDataLabel(),getDataTone(),getDataMode(),getDatanoofshakes(),getDatadiffmath(),getDatanoofmath());
        db.close();
 
+}
+
+void updateactivity(){
+    Toast.makeText(getApplicationContext(),dataHours+":"+dataMintune,Toast.LENGTH_SHORT).show();
+    texttime.setText(String.format("%s:%s", dataHours, dataMintune));
 }
 }
