@@ -204,8 +204,7 @@ void save(){
        savedata();
    /////
     Cursor res = db.getdata();
-    int a=res.getCount();
-    String str = Integer.toString(a);
+
     Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
    /////
     finish();

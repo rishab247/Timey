@@ -64,6 +64,8 @@ public class slideAdapter extends PagerAdapter {
                         context.startActivity(intent1);
                         Toast.makeText(context,"slide 2",Toast.LENGTH_SHORT).show();
                         break;
+                    case 2:
+                        finishUpdate(v);
                 }
 
             }
