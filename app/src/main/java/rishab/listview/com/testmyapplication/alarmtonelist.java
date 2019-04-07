@@ -31,10 +31,7 @@ public class alarmtonelist extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-            mediaPlayer.stop();
-            mediaPlayer.release();
-            mediaPlayer = null;
-        finish();
+        mediaPlayer.release();
         Intent intent=new  Intent(alarmtonelist.this,MenuActivity.class);
         startActivity(intent);
 
@@ -113,7 +110,8 @@ void playpause(View view){
 
                 if(mediaPlayer!=null)
                 {
-                    mediaPlayer.stop();
+                    mediaPlayer.pause();
+mediaPlayer.stop();
                     mediaPlayer.release();
                     imageView.setBackgroundResource(android.R.drawable.ic_media_pause);
 
@@ -139,7 +137,8 @@ void playpause(View view){
                         x=1;
                         }
                         else{
-                            mediaPlayer.stop();
+                            mediaPlayer.pause();
+mediaPlayer.stop();
                             mediaPlayer.release();
                             imageView.setBackgroundResource(android.R.drawable.ic_media_play);
                             x=0;
@@ -155,7 +154,8 @@ void playpause(View view){
                             x=1;
                         }
                         else{
-                            mediaPlayer.stop();
+                            mediaPlayer.pause();
+mediaPlayer.stop();
                             mediaPlayer.release();
                             imageView.setBackgroundResource(android.R.drawable.ic_media_play);
                             x=0;
@@ -169,7 +169,8 @@ void playpause(View view){
                             x=1;
                         }
                         else{
-                            mediaPlayer.stop();
+                            mediaPlayer.pause();
+mediaPlayer.stop();
                             mediaPlayer.release();
                             imageView.setBackgroundResource(android.R.drawable.ic_media_play);
                             x=0;
@@ -183,7 +184,8 @@ void playpause(View view){
                             x=1;
                         }
                         else{
-                            mediaPlayer.stop();
+                            mediaPlayer.pause();
+mediaPlayer.stop();
                             mediaPlayer.release();
                             imageView.setBackgroundResource(android.R.drawable.ic_media_play);
                             x=0;
@@ -197,7 +199,9 @@ void playpause(View view){
                             x=1;
                         }
                         else{
-                            mediaPlayer.stop();
+                            mediaPlayer.pause();
+mediaPlayer.stop();
+
                             mediaPlayer.release();
                             imageView.setBackgroundResource(android.R.drawable.ic_media_play);
                             x=0;
@@ -211,7 +215,8 @@ void playpause(View view){
                             x=1;
                         }
                         else{
-                            mediaPlayer.stop();
+                            mediaPlayer.pause();
+mediaPlayer.stop();
                             mediaPlayer.release();
                             imageView.setBackgroundResource(android.R.drawable.ic_media_play);
                             x=0;
@@ -225,7 +230,8 @@ void playpause(View view){
                             x=1;
                         }
                         else{
-                            mediaPlayer.stop();
+                            mediaPlayer.pause();
+mediaPlayer.stop();
                             mediaPlayer.release();
                             imageView.setBackgroundResource(android.R.drawable.ic_media_play);
                             x=0;
@@ -239,7 +245,8 @@ void playpause(View view){
                             x=1;
                         }
                         else{
-                            mediaPlayer.stop();
+                            mediaPlayer.pause();
+mediaPlayer.stop();
                             mediaPlayer.release();
                             imageView.setBackgroundResource(android.R.drawable.ic_media_play);
                             x=0;
@@ -253,7 +260,8 @@ void playpause(View view){
                             x=1;
                         }
                         else{
-                            mediaPlayer.stop();
+                            mediaPlayer.pause();
+mediaPlayer.stop();
                             mediaPlayer.release();
                             imageView.setBackgroundResource(android.R.drawable.ic_media_play);
                             x=0;
@@ -267,7 +275,8 @@ void playpause(View view){
                             x=1;
                         }
                         else{
-                            mediaPlayer.stop();
+                            mediaPlayer.pause();
+mediaPlayer.stop();
                             mediaPlayer.release();
                             imageView.setBackgroundResource(android.R.drawable.ic_media_play);
                             x=0;
@@ -281,7 +290,8 @@ void playpause(View view){
                             x=1;
                         }
                         else{
-                            mediaPlayer.stop();
+                            mediaPlayer.pause();
+mediaPlayer.stop();
                             mediaPlayer.release();
                             imageView.setBackgroundResource(android.R.drawable.ic_media_play);
                             x=0;
@@ -296,8 +306,9 @@ void playpause(View view){
 
     @Override
     protected void onDestroy() {
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.alarmtone3);
         if(mediaPlayer!=null&&mediaPlayer.isPlaying()){
-            mediaPlayer.stop();
+mediaPlayer.stop();
             mediaPlayer.release();
             mediaPlayer = null;
 
