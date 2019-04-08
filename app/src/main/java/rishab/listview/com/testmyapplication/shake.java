@@ -55,10 +55,6 @@ public class shake extends AppCompatActivity {
         shakesve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("mode", "shake");
-                intent.putExtra("noofshake",noofshake);
-                setResult(RESULT_OK, intent);
                 finish();
             }
         });
@@ -72,10 +68,6 @@ public class shake extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent();
-                intent.putExtra("mode", "shake");
-                intent.putExtra("noofshake",noofshake);
-                setResult(RESULT_OK, intent);
                 finish();
             }
         });

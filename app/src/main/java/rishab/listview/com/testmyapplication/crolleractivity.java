@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.sdsmdg.harjot.crollerTest.Croller;
 import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 
+import rishab.listview.com.testmyapplication.database.constants;
+
 public class crolleractivity extends AppCompatActivity {
     private TextView txt;
     private Croller croller;
@@ -44,7 +46,13 @@ savebut.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
 
         Toast.makeText(getApplicationContext(),hours1+minutes,Toast.LENGTH_LONG).show();
-
+        constants constants = new constants();
+        constants.setHours(hours1);
+        constants.setMintune(minutes);
+        if(hours1==null||hours1.equals("0"))
+            hours1="12";
+        if(minutes==null||minutes.equals("0"))
+            minutes="00";
         Intent intent = new Intent();
         intent.putExtra("hours", hours1);
         intent.putExtra("minutes", minutes);

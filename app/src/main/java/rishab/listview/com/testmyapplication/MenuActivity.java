@@ -66,7 +66,7 @@ private EditText alarmtitle;
             }
         });
         alarmtitle = findViewById(R.id.setalarmtitle);
-        updateactivity();
+
 
     }
 
@@ -415,7 +415,13 @@ void savedata(){
 
 }
 
-void updateactivity(){
+    @Override
+    protected void onPostResume() {
+        updateactivity();
+        super.onPostResume();
+    }
+
+    void updateactivity(){
     Toast.makeText(getApplicationContext(),dataHours+":"+dataMintune,Toast.LENGTH_SHORT).show();
     texttime.setText(String.format("%s:%s", dataHours, dataMintune));
 }
