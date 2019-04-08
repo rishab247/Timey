@@ -66,6 +66,8 @@ public class slideAdapter extends PagerAdapter {
 
 
                         break;
+                    case 2:
+                        finishUpdate(v);
                 }
 
             }
