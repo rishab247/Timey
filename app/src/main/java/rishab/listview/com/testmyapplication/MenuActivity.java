@@ -28,7 +28,7 @@ private CardView cardView1,cardView2,cardView3,cardView4;
 private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu,texttime;
 private Button savebut,backbut;
 private EditText alarmtitle;
-
+private TextView textmode;
     private String dataHours= "2";
     private String dataMintune= "00";
     private String dataRepeat_days= "mo";
@@ -66,7 +66,7 @@ private EditText alarmtitle;
             }
         });
         alarmtitle = findViewById(R.id.setalarmtitle);
-
+textmode = findViewById(R.id.setalarmmode);
 
     }
 
@@ -198,15 +198,14 @@ void repeatingdays()
 void save(){
 
     str1=alarmtitle.getText().toString();
-    dataLabel=str1;
+    dataLabel=str1.trim();
         repeatingdays();
        dataRepeat_days=str;
        savedata();
    /////
     Cursor res = db.getdata();
 
-    Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
-   /////
+    /////
     finish();
     }
 void cardanimation(){
@@ -408,10 +407,10 @@ void cardanimation(){
 
 }
 void savedata(){
-
+    Toast.makeText(getApplicationContext(),Data1.mode,Toast.LENGTH_SHORT).show();
        db.insertdata(getDataHours(),getDataMintune(),getDataRepeat_days(),getDataLabel(),getDataTone(),getDataMode(),getDatanoofshakes(),getDatadiffmath(),getDatanoofmath());
        db.close();
-
+        refresh();
 }
 
     @Override
@@ -421,7 +420,19 @@ void savedata(){
     }
 
     void updateactivity(){
-    Toast.makeText(getApplicationContext(),dataHours+":"+dataMintune,Toast.LENGTH_SHORT).show();
-    texttime.setText(String.format("%s:%s", dataHours, dataMintune));
+        dataMode = Data1.mode;
+        datanoofshakes=Data1.nos;
+       datanoofmath=Data1.nom;
+       datadiffmath=Data1.diffom;
+    textmode.setText(Data1.mode+" Mode");
+
+
+        texttime.setText(String.format("%s:%s", dataHours, dataMintune));
+}
+void refresh (){
+        Data1.mode="Simple";
+        Data1.nos=null;
+        Data1.nom=null;
+        Data1.diffom=null;
 }
 }

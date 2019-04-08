@@ -44,9 +44,9 @@ public class slideAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, final int position) {
+    public Object instantiateItem(final ViewGroup container, final int position) {
         inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.slide,container,false);
+        final View view = inflater.inflate(R.layout.slide,container,false);
         LinearLayout layoutslide = (LinearLayout) view.findViewById(R.id.slidelinearlayout1);
         Button imgslide =   view.findViewById(R.id.viewpagerbutton);
         imgslide.setOnClickListener(new View.OnClickListener() {
@@ -57,17 +57,18 @@ public class slideAdapter extends PagerAdapter {
                     case 0:
                         Intent intent=new  Intent(context, math_activity.class);
                         context.startActivity(intent);
-                        Toast.makeText(context,"slide 1",Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
                         Intent intent1=new  Intent(context, shake.class);
                         context.startActivity(intent1);
-                        Toast.makeText(context,"slide 2",Toast.LENGTH_SHORT).show();
 
 
                         break;
                     case 2:
-                        finishUpdate(v);
+                        Data1.mode = "Simple";
+
+                        break;
+
                 }
 
             }
