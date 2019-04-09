@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class databasehandler extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME= "Alarm1xxnn01.db";
+    public static final String DATABASE_NAME= "Alarm1101.db";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME= "alarms";
     public static final String Hours= "hours";

@@ -55,7 +55,9 @@ public class shake extends AppCompatActivity {
         shakesve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+               Data1.mode="Shake";
+               Data1.nos = noofshake;
+               finish();
             }
         });
 
@@ -68,6 +70,8 @@ public class shake extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Data1.mode="Shake";
+                Data1.nos = noofshake;
                 finish();
             }
         });

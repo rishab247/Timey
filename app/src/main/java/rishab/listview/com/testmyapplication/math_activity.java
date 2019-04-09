@@ -12,8 +12,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static java.util.logging.Logger.global;
-
 public class math_activity extends AppCompatActivity {
     private TextView mathnotext,mathdifficulty;
     private SeekBar seekBar1,seekBar2;
@@ -34,6 +32,10 @@ public class math_activity extends AppCompatActivity {
         mathsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Data1.mode="Math";
+                Data1.nom = noofmath;
+                Data1.diffom = pos;
+
                 finish();
 
             }
@@ -112,6 +114,10 @@ public class math_activity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Data1.mode="Math";
+                Data1.nom = noofmath;
+                Data1.diffom = pos;
+
                 finish();
 
             }
