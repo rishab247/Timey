@@ -74,11 +74,8 @@ public class DETAILS_Activity extends AppCompatActivity implements View.OnClickL
         recyclerView=findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         data.add(current);
-
-        recyclerView = (RecyclerView) findViewById(R.id.recycler);
         adapter = new customMyAdapter(this,data);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this)); // Vertical Orientation By Default
 
     }
 
