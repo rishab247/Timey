@@ -1,15 +1,9 @@
 package rishab.listview.com.testmyapplication;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Handler;
-import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,20 +19,20 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import rishab.listview.com.testmyapplication.database.databasehandler;
 
 
 public class DETAILS_Activity extends AppCompatActivity implements View.OnClickListener {
+databasehandler db;
 
 
-    RecyclerView recyclerView;
-
-    customMyAdapter adapter;
-
-
-    private Boolean isFabOpen = false;
+     private Boolean isFabOpen = false;
     private FloatingActionButton fab,fab1,fab2;
     private Animation fab_open,fab_close,rotate_forward,rotate_backward;
 
@@ -49,8 +43,6 @@ public class DETAILS_Activity extends AppCompatActivity implements View.OnClickL
     private boolean msnooze = false;
     private Button closeDialog;
     private ImageView imageview,imageView2,imageView3,imageView4,imageView5,imageView6,imageView7,imageView8;
-    ArrayList<Information> data = new ArrayList<>();
-    Information current = new Information();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +51,7 @@ public class DETAILS_Activity extends AppCompatActivity implements View.OnClickL
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
 
 
         fab = (FloatingActionButton)findViewById(R.id.fab);
@@ -71,11 +64,24 @@ public class DETAILS_Activity extends AppCompatActivity implements View.OnClickL
         fab.setOnClickListener(this);
         fab1.setOnClickListener(this);
         fab2.setOnClickListener(this);
-        recyclerView=findViewById(R.id.recycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        data.add(current);
-        adapter = new customMyAdapter(this,data);
-        recyclerView.setAdapter(adapter);
+        ListView listView = findViewById(R.id.recycler);
+        db = new databasehandler(this);
+        Cursor cursor = db.getdata();
+
+            while(cursor.moveToNext()){
+                HashMap<String, String> hashMap = new HashMap<>();//create a hashmap to store the data in key value pair
+                hashMap.put("time", cursor.getString(1)+":"+cursor.getString(2));
+                hashMap.put("repeat", cursor.getString(3));
+                hashMap.put("lable", cursor.getString(4));
+                arrayList.add(hashMap);//add the hashmap into arrayList
+            }
+        String[] from = {"time", "lable"};//string array
+        int[] to = {R.id.detailssettime, R.id.detailstitle};//int array of views id's
+        final customMyAdapter simpleAdapter = new customMyAdapter(this, arrayList, R.layout.details_row, from, to);//Create object and set the parameters for simpleAdapter
+        listView.setAdapter(simpleAdapter);//sets the adapter for listView
+
+
+
 
     }
 
@@ -213,7 +219,6 @@ public class DETAILS_Activity extends AppCompatActivity implements View.OnClickL
             fab1.setClickable(false);
             fab2.setClickable(false);
             isFabOpen = false;
-            Log.d("Raj", "close");
 
         } else {
 

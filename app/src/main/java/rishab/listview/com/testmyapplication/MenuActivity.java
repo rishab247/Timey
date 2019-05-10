@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -39,7 +41,7 @@ private TextView textmode;
     private String datanoofshakes="0";
     private String datanoofmath="0";
     private String datadiffmath="0";
-
+String  try1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,6 @@ private TextView textmode;
             }
         });
         texttime = findViewById(R.id.settime);
-
         backbut = findViewById(R.id.setback);
         backbut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -203,7 +204,6 @@ void save(){
        dataRepeat_days=str;
        savedata();
    /////
-    Cursor res = db.getdata();
 
     /////
     finish();
@@ -426,8 +426,7 @@ void savedata(){
        datadiffmath=Data1.diffom;
     textmode.setText(Data1.mode+" Mode");
 
-
-        texttime.setText(String.format("%s:%s", dataHours, dataMintune));
+         texttime.setText(String.format("%s:%s", dataHours, dataMintune));
 }
 void refresh (){
         Data1.mode="Simple";

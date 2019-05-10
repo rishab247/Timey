@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class databasehandler extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME= "Alarm1101.db";
+    public static final String DATABASE_NAME= "Alarm1102121.db";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME= "alarms";
     public static final String Hours= "hours";
@@ -71,8 +71,16 @@ public class databasehandler extends SQLiteOpenHelper {
             return true;
         }
     }
-    public boolean deleteTitle(String id)
-    {SQLiteDatabase db = this.getWritableDatabase();
+
+    public int getCount() {
+        String countQuery = "SELECT  * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count;
+    }
+    public boolean deleteTitle(String id){SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME, KEY_ID + "=" + id    , null) > 0;
     }
     public  boolean updatedata(String id,String hours ,String minutes,String repeatingday,String label,String tone,String mode,String noshake,String diffmath,String noofmath){

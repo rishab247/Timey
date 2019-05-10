@@ -12,9 +12,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".button_mode"></activity>
-        <activity android:name=".mode3" />
-        <activity android:name=".mode2" />
-        <activity android:name=".mode1" />
         <activity android:name=".shake" />
         <activity android:name=".math_activity" />
         <activity
