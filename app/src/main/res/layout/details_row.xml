@@ -35,16 +35,19 @@
 
             <TextView
                 android:id="@+id/detailstitle"
-                android:layout_width="100dp"
-                android:layout_height="35dp"
+                android:layout_width="wrap_content"
+                android:layout_height="41dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
                 android:background="#fff"
                 android:gravity="center"
                 android:text="TITIE"
                 android:textColor="#000"
                 android:textSize="30sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/detailsimage"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,14 +57,13 @@
                 android:layout_width="143dp"
                 android:layout_height="44dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="40dp"
                 android:gravity="center"
                 android:text="12:00"
                 android:textColor="#000"
                 android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/detailsimage"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/detailstitle" />
 
             <TextView
                 android:id="@+id/detailsampm"

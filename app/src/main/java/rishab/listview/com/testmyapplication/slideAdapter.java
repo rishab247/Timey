@@ -40,14 +40,14 @@ public class slideAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return (view==(LinearLayout)object);
+        return (view== object);
     }
 
     @Override
     public Object instantiateItem(final ViewGroup container, final int position) {
-        inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View view = inflater.inflate(R.layout.slide,container,false);
-        LinearLayout layoutslide = (LinearLayout) view.findViewById(R.id.slidelinearlayout1);
+        LinearLayout layoutslide = view.findViewById(R.id.slidelinearlayout1);
         Button imgslide =   view.findViewById(R.id.viewpagerbutton);
         imgslide.setOnClickListener(new View.OnClickListener() {
             @Override

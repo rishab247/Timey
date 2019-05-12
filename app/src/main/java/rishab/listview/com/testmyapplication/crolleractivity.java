@@ -172,7 +172,7 @@ void Animatetext(TextView tv,int startsize,int endSize){
 
 
     void setcroller(){
-        croller = (Croller) findViewById(R.id.croller);
+        croller = findViewById(R.id.croller);
         croller.setProgress(0);
         croller.setIndicatorWidth(10);
         croller.setMin(00);
@@ -187,7 +187,7 @@ void Animatetext(TextView tv,int startsize,int endSize){
         croller.setIndicatorColor(Color.parseColor("#0B3C49"));
         croller.setProgressSecondaryColor(Color.parseColor("#EEEEEE"));
 
-        croller = (Croller) findViewById(R.id.croller);
+        croller = findViewById(R.id.croller);
         croller.setOnProgressChangedListener(new Croller.onProgressChangedListener() {
             @Override
             public void onProgressChanged(int progress) { String str;

@@ -13,6 +13,7 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,11 +28,12 @@ public class MenuActivity extends AppCompatActivity {
     private databasehandler db;
 private CardView cardView1,cardView2,cardView3,cardView4;
  private  int mo=0,tu=0,we=0,th=0,fr=0,sa=0,su=0;
-private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu,texttime;
+private TextView textmo,texttu,textwe,textth,textfr,textsa,textsu,texttime,alarmtone;
 private Button savebut,backbut;
 private EditText alarmtitle;
 private TextView textmode;
-    private String dataHours= "2";
+private ImageView toneedit;
+    private String dataHours= "12";
     private String dataMintune= "00";
     private String dataRepeat_days= "mo";
     private String dataLabel= "hello";
@@ -41,12 +43,12 @@ private TextView textmode;
     private String datanoofshakes="0";
     private String datanoofmath="0";
     private String datadiffmath="0";
-String  try1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        tone();
         cardanimation();
         textselector();
       db= new databasehandler(this);
@@ -60,6 +62,7 @@ String  try1;
         });
         texttime = findViewById(R.id.settime);
         backbut = findViewById(R.id.setback);
+
         backbut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +83,12 @@ textmode = findViewById(R.id.setalarmmode);
                 dataMintune= data.getStringExtra("minutes");
             }
         }
+        if (requestCode==3){
+            if(resultCode == RESULT_OK) {
+                dataTone = data.getStringExtra("tone");
+
+            }
+        }
         if(requestCode ==2){
             if(resultCode==RESULT_OK){
                 dataMode = data.getStringExtra("mode");
@@ -97,6 +106,10 @@ textmode = findViewById(R.id.setalarmmode);
             }
         }
     }
+
+
+
+
 
     public String getDatanoofshakes() {
         return datanoofshakes;
@@ -172,6 +185,20 @@ textmode = findViewById(R.id.setalarmmode);
     {
         return new StringBuilder(s1).append(s2).toString();
     }
+    void tone(){
+
+        toneedit = findViewById(R.id.seteditalarmtone);
+        alarmtone = findViewById(R.id.setalarmtone);
+        toneedit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new  Intent(MenuActivity.this,alarmtonelist.class);
+                startActivityForResult(intent,3);
+
+            }
+        });
+    }
 void repeatingdays()
 {
     if(mo%2!=0){
@@ -203,10 +230,11 @@ void save(){
         repeatingdays();
        dataRepeat_days=str;
        savedata();
-   /////
 
-    /////
     finish();
+    Intent intent=new  Intent(MenuActivity.this, DETAILS_Activity.class);
+    startActivity(intent);
+
     }
 void cardanimation(){
     cardView1 = findViewById(R.id.cardView2);
@@ -272,19 +300,12 @@ void cardanimation(){
                     cardView4.setElevation(5);
                 }
             },100);
-            finish();
-            Intent intent=new  Intent(MenuActivity.this,alarmtonelist.class);
-            startActivity(intent);
+                Toast.makeText(getApplicationContext(),getDataTone(),Toast.LENGTH_LONG).show();
 
         }
     });
 }
 
-    @Override
-    public void recreate() {
-        super.recreate();
-        this.onCreate(null);
-    }
 
 
     void textselector() {
@@ -425,7 +446,7 @@ void savedata(){
        datanoofmath=Data1.nom;
        datadiffmath=Data1.diffom;
     textmode.setText(Data1.mode+" Mode");
-
+        alarmtone.setText("Alarm Tone "+getDataTone());
          texttime.setText(String.format("%s:%s", dataHours, dataMintune));
 }
 void refresh (){

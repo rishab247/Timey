@@ -1,6 +1,7 @@
 package rishab.listview.com.testmyapplication;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -44,6 +46,8 @@ databasehandler db;
     private Button closeDialog;
     private ImageView imageview,imageView2,imageView3,imageView4,imageView5,imageView6,imageView7,imageView8;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,17 +58,24 @@ databasehandler db;
         ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
 
 
-        fab = (FloatingActionButton)findViewById(R.id.fab);
-        fab1 = (FloatingActionButton)findViewById(R.id.fab1);
-        fab2 = (FloatingActionButton)findViewById(R.id.fab2);
+        fab  = findViewById(R.id.fab);
+        fab1 = findViewById(R.id.fab1);
+        fab2 = findViewById(R.id.fab2);
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open1);
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close1);
         rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward1);
         rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
         fab.setOnClickListener(this);
-        fab1.setOnClickListener(this);
-        fab2.setOnClickListener(this);
-        ListView listView = findViewById(R.id.recycler);
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent=new  Intent(DETAILS_Activity.this, MenuActivity.class);
+
+                startActivity(intent);
+            }
+        });
+         ListView listView = findViewById(R.id.recycler);
         db = new databasehandler(this);
         Cursor cursor = db.getdata();
 
@@ -75,7 +86,7 @@ databasehandler db;
                 hashMap.put("lable", cursor.getString(4));
                 arrayList.add(hashMap);//add the hashmap into arrayList
             }
-        String[] from = {"time", "lable"};//string array
+        String[] from = {"time", "lable"};
         int[] to = {R.id.detailssettime, R.id.detailstitle};//int array of views id's
         final customMyAdapter simpleAdapter = new customMyAdapter(this, arrayList, R.layout.details_row, from, to);//Create object and set the parameters for simpleAdapter
         listView.setAdapter(simpleAdapter);//sets the adapter for listView
@@ -84,6 +95,7 @@ databasehandler db;
 
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -96,15 +108,10 @@ databasehandler db;
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId())
         {
-           // case R.id.about:
-                //Toast.makeText(getApplicationContext(),"about",Toast.LENGTH_SHORT).show();
-            case R.id.Theme:
+          case R.id.Theme:
                 final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                // Get the layout inflater
                 LayoutInflater inflater = (this).getLayoutInflater();
-                // Inflate and set the layout for the dialog
-                // Pass null as the parent view because its going in the
-                // dialog layout
+
                 builder.setTitle("theme");
 
                 builder.setCancelable(false);

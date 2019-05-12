@@ -15,7 +15,7 @@ public class button_mode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button_mode);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = findViewById(R.id.viewpager);
         myadapter = new slideAdapter(this);
         viewPager.setAdapter(myadapter);
 

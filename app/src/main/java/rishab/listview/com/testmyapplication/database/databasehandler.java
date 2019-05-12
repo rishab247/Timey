@@ -64,12 +64,7 @@ public class databasehandler extends SQLiteOpenHelper {
         long result= db.insert(TABLE_NAME,null,contentValues);
         db.close();
 
-        if(result==-1){
-            return false;
-        }
-        else {
-            return true;
-        }
+        return result != -1;
     }
 
     public int getCount() {

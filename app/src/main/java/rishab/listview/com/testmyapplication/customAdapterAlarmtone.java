@@ -44,8 +44,8 @@ public class customAdapterAlarmtone extends BaseAdapter {
             convertView = View.inflate(context, R.layout.alarm_tone_list_row, null);
         }
 
-        TextView toneSerialNum = (TextView) convertView.findViewById(R.id.toneserialnum);
-        TextView toneName=(TextView)convertView.findViewById(R.id.tonename);
+        TextView toneSerialNum = convertView.findViewById(R.id.toneserialnum);
+        TextView toneName= convertView.findViewById(R.id.tonename);
         toneName.setText(names.get(position));
 
         toneSerialNum.setText(ids.get(position));
