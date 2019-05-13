@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -42,8 +43,10 @@ private ImageView toneedit;
     private String str=" ",str1=null;
     private String datanoofshakes="0";
     private String datanoofmath="0";
-    private String datadiffmath="0";
+    MediaPlayer  mediaPlayer ;
 
+    private String datadiffmath="0";
+boolean flag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -186,7 +189,42 @@ textmode = findViewById(R.id.setalarmmode);
         return new StringBuilder(s1).append(s2).toString();
     }
     void tone(){
+        Music music;
+        final ImageView ivPlay;
+        ivPlay = findViewById(R.id.setplaypause);
+        final ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add( R.raw.alarmtone1);
+        arrayList.add(R.raw.alarmtone2);
+        arrayList.add( R.raw.alarmtone3);
+        arrayList.add( R.raw.alarmtone4);
+        arrayList.add(R.raw.alarmtone5);
+        arrayList.add( R.raw.alarmtone6);
+        arrayList.add( R.raw.alarmtone7);
+        arrayList.add(R.raw.alarmtone8);
+        arrayList.add( R.raw.alarmtone9);
+        arrayList.add( R.raw.alarmtone10);
+        arrayList.add( R.raw.alarmtone11);
+        // play music
+        mediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.alarmtone1);
+        ivPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(flag){                    mediaPlayer.release();
 
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(),arrayList.get(Integer.parseInt(dataTone)));
+                    flag = false;
+                }
+                if(mediaPlayer.isPlaying()) {
+                    mediaPlayer.pause();
+                    mediaPlayer.stop();
+                    flag = true;
+                    ivPlay.setImageResource(android.R.drawable.ic_media_play);
+                } else {
+                    mediaPlayer.start();
+                    ivPlay.setImageResource(android.R.drawable.ic_media_pause);
+                }
+            }
+        });
         toneedit = findViewById(R.id.seteditalarmtone);
         alarmtone = findViewById(R.id.setalarmtone);
         toneedit.setOnClickListener(new View.OnClickListener() {
@@ -198,6 +236,11 @@ textmode = findViewById(R.id.setalarmmode);
 
             }
         });
+
+
+
+
+
     }
 void repeatingdays()
 {
