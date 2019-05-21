@@ -252,11 +252,11 @@ databasehandler db;
                 break;
             case R.id.fab1:
 
-                Log.d("Raj", "Fab 1");
+                Log.d(" ", "Fab 1");
                 break;
             case R.id.fab2:
 
-                Log.d("Raj", "Fab 2");
+                Log.d(" ", "Fab 2");
                 break;
         }
 

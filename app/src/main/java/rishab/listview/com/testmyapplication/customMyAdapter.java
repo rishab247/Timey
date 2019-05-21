@@ -15,8 +15,8 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class customMyAdapter extends SimpleAdapter {
-    private Context context;
-   private ArrayList<HashMap<String, String>> arrayList;
+    private final Context context;
+   private final ArrayList<HashMap<String, String>> arrayList;
 
 
     public customMyAdapter(Context context, ArrayList<HashMap<String, String>> data, int resource, String[] from, int[] to) {
@@ -52,7 +52,7 @@ public class customMyAdapter extends SimpleAdapter {
         });
 
         HashMap<String, String> hashmap= arrayList.get(position);
-        String string= hashmap.get("repeat").trim();
+        String string= Objects.requireNonNull(hashmap.get("repeat")).trim();
        String[] separated = Objects.requireNonNull(string).split("");
 
             for(int i=1;i<=string.length();i++){
@@ -77,12 +77,9 @@ public class customMyAdapter extends SimpleAdapter {
                 else if(result==6){
                         textsa.setBackgroundColor(0xFF304FFE);
                         textsa.setTextColor(0xFFFFFFFF);}
-                else if(result==7) {
+                else {
                     textsu.setBackgroundColor(0xFF304FFE);
                     textsu.setTextColor(0xFFFFFFFF);
-                }
-                else{
-                   Toast.makeText(context,Integer.toString(result),Toast.LENGTH_SHORT).show();
                 }
                 }}
 

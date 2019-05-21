@@ -137,7 +137,7 @@ return ros;
                 alarmlist.add(constants1);
             } while (cursor.moveToNext());
         }
-
+cursor.close();
         // return contact list
         return alarmlist;
     }

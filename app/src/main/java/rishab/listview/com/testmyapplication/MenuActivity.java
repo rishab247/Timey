@@ -1,5 +1,8 @@
 package rishab.listview.com.testmyapplication;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -44,8 +49,12 @@ private ImageView toneedit;
     private String datanoofshakes="0";
     private String datanoofmath="0";
     MediaPlayer  mediaPlayer ;
-
+    AlarmManager alarmManager;
+    private PendingIntent pending_intent;
     private String datadiffmath="0";
+
+    MenuActivity inst;
+    Context context;
 boolean flag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,24 +65,23 @@ boolean flag;
         textselector();
       db= new databasehandler(this);
       db.getWritableDatabase();
-        savebut = findViewById(R.id.setsave);
-        savebut.setOnClickListener(new View.OnClickListener() {
+      savebut = findViewById(R.id.setsave);
+      savebut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                save();
             }
         });
-        texttime = findViewById(R.id.settime);
-        backbut = findViewById(R.id.setback);
-
-        backbut.setOnClickListener(new View.OnClickListener() {
+      texttime = findViewById(R.id.settime);
+      backbut = findViewById(R.id.setback);
+      backbut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             onback();
             }
         });
-        alarmtitle = findViewById(R.id.setalarmtitle);
-textmode = findViewById(R.id.setalarmmode);
+      alarmtitle = findViewById(R.id.setalarmtitle);
+      textmode = findViewById(R.id.setalarmmode);
 
     }
 
@@ -272,11 +280,11 @@ void save(){
     dataLabel=str1.trim();
         repeatingdays();
        dataRepeat_days=str;
-       savedata();
 
     finish();
     Intent intent=new  Intent(MenuActivity.this, DETAILS_Activity.class);
     startActivity(intent);
+    savedata();
 
     }
 void cardanimation(){
@@ -471,6 +479,7 @@ void cardanimation(){
 
 }
 void savedata(){
+        setalarm();
     Toast.makeText(getApplicationContext(),Data1.mode,Toast.LENGTH_SHORT).show();
        db.insertdata(getDataHours(),getDataMintune(),getDataRepeat_days(),getDataLabel(),getDataTone(),getDataMode(),getDatanoofshakes(),getDatadiffmath(),getDatanoofmath());
        db.close();
@@ -498,4 +507,48 @@ void refresh (){
         Data1.nom=null;
         Data1.diffom=null;
 }
+
+
+
+void setalarm(){
+
+
+    this.context = this;
+Toast.makeText(getApplicationContext(),"alarmset",Toast.LENGTH_SHORT).show();
+
+    final Intent myIntent = new Intent(this.context, AlarmReceiver.class);
+
+    alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+    final Calendar calendar = Calendar.getInstance();
+    calendar.add(Calendar.SECOND, 3);
+    //setAlarmText("You clicked a button");
+
+    final String hour = getDataHours();
+    final String minute = getDataMintune();
+
+    Log.e("MyActivity", "In the receiver withutuo " + hour + " and " + minute+"  "+getDataTone());
+
+    int hour1  = Integer.parseInt(hour);
+    int minute1  = Integer.parseInt(hour);
+    calendar.set(Calendar.HOUR_OF_DAY, hour1);
+    calendar.set(Calendar.MINUTE, minute1);
+
+    myIntent.putExtra("extra", "yes");
+    myIntent.putExtra("tone", getDataTone());
+    myIntent.putExtra("mode", Data1.mode);
+    myIntent.putExtra("lable", dataLabel);
+
+    pending_intent = PendingIntent.getBroadcast(MenuActivity.this, 2, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+    alarmManager.set(AlarmManager.RTC_WAKEUP, 5000, pending_intent);
+
+
+}
+@Override
+    public void onStart() {
+        super.onStart();
+        inst = this;
+    }
+
 }
