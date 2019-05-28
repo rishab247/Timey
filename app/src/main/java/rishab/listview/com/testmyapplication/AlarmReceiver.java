@@ -15,13 +15,22 @@ public class AlarmReceiver extends BroadcastReceiver {
             String tone = Objects.requireNonNull(intent.getExtras()).getString("tone");
             String mode = Objects.requireNonNull(intent.getExtras()).getString("mode");
             String lable = Objects.requireNonNull(intent.getExtras()).getString("lable");
-            Log.e("MyActivity", "In the receiver with " + state);
+            String noofshake  =  Objects.requireNonNull(intent.getExtras()).getString("noofshake");
+            String datanoofmath = Objects.requireNonNull(intent.getExtras()).getString("datanoofmath");
+            String datadiffmath  =  Objects.requireNonNull(intent.getExtras()).getString("datadiffmath");
+
+            String time  =   Objects.requireNonNull(intent.getExtras()).getString("time");
+            Log.e("MyActivity", "In the receiver with   " + time);
 
             Intent serviceIntent = new Intent(context,RingtonePlayingService.class);
             serviceIntent.putExtra("extra", state);
             serviceIntent.putExtra("tone", tone);
             serviceIntent.putExtra("mode", mode);
             serviceIntent.putExtra("lable", lable);
+            serviceIntent.putExtra("noofshake", noofshake);
+            serviceIntent.putExtra("datanoofmath", datanoofmath);
+            serviceIntent.putExtra("datadiffmath", datadiffmath);
+            serviceIntent.putExtra("time", time);
 
             context.startService(serviceIntent);
         }

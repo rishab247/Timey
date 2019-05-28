@@ -47,28 +47,35 @@ public class RingtonePlayingService extends Service {
         String tone = Objects.requireNonNull(intent.getExtras()).getString("tone");
         String mode = intent.getExtras().getString("mode");
         String lable = intent.getExtras().getString("lable");
-        if(mode==null){
-            mode= "simple";
-        }
+        String noofshake = intent.getExtras().getString("noofshake");
+        String datanoofmath = intent.getExtras().getString("datanoofmath");
+        String datadiffmath = intent.getExtras().getString("datadiffmath");
+        String time = intent.getExtras().getString("time");
+        if(mode==null) mode = "simple";
+        if(noofshake==null) noofshake = "50";
+        if(datadiffmath==null) datadiffmath = "1";
+        if(datanoofmath==null) datanoofmath = "1";
 
+        if(tone==null) tone = "3";
+        if(time==null) time = "1200  ";
 
-        if(tone==null){
-            tone = "3";
-        }
-        Log.e("dytfyguhjk",mode);
 
         switch(mode){
             case "Math":
             {
                 intent1 = new Intent(this.getApplicationContext(), mathstop.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent1.putExtra("lable",lable);
+                intent1.putExtra("datanoofmath",datanoofmath);
+                intent1.putExtra("datadiffmath",datadiffmath);
                 break;
             }
             case "Shake":
             {
                 intent1 = new Intent(this.getApplicationContext(), shakestop.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent1.putExtra("lable",lable);
+                intent1.putExtra("noofshake",noofshake);
                 break;
+
             }
             default:
             {
@@ -77,6 +84,8 @@ public class RingtonePlayingService extends Service {
                 break;
             }
         }
+        intent1.putExtra("time",time);
+
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent1,  PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_ONE_SHOT);
 
         Notification mNotify  = new Notification.Builder(this)
@@ -113,39 +122,18 @@ public class RingtonePlayingService extends Service {
             int random_number= Integer.parseInt(tone);
             Log.e("random number is ", String.valueOf(random_number));
 
-            if (random_number == 1) {
-                mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone1);
-            }
-            else if (random_number == 2) {
-                mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone2);
-            }
-            else if (random_number == 3) {
-                mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone3);
-            }
-            else if (random_number == 4) {
-                mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone4);
-            }
-            else if (random_number == 5) {
-                mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone5);
-            }
-            else if (random_number == 6) {
-                mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone6);
-            }
-            else if (random_number == 7) {
-                mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone7);
-            }
-            else if (random_number == 8) {
-                mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone8);
-            }
-            else if (random_number == 9) {
-                mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone9);
-            }
-            else if (random_number == 10) {
+            if (random_number == 1) mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone1);
+            else if (random_number == 2) mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone2);
+            else if (random_number == 3) mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone3);
+            else if (random_number == 4) mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone4);
+            else if (random_number == 5) mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone5);
+            else if (random_number == 6) mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone6);
+            else if (random_number == 7) mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone7);
+            else if (random_number == 8) mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone8);
+            else if (random_number == 9) mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone9);
+            else if (random_number == 10)
                 mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone10);
-            }
-            else {
-                mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone1);
-            }
+            else mMediaPlayer = MediaPlayer.create(this, R.raw.alarmtone1);
             //mMediaPlayer = MediaPlayer.create(this, R.raw.richard_dawkins_1);
 
             mMediaPlayer.start();

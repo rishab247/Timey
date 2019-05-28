@@ -22,7 +22,8 @@ public class simplestop extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simplestop);
 
-        Bundle bundle = getIntent().getExtras();
+        String time  =  Objects.requireNonNull(getIntent().getExtras()).getString("time");
+        final int code = Integer.valueOf(time);
 
              lable = getIntent().getExtras().getString("lable");
 
@@ -40,7 +41,7 @@ public class simplestop extends AppCompatActivity {
                     @Override
                     public void run() {
                         proSwipeBtn.showResultIcon(true);
-                        pending_intent = PendingIntent.getBroadcast(simplestop.this,2, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        pending_intent = PendingIntent.getBroadcast(simplestop.this,code, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                         myIntent.putExtra("extra", "no");
                         sendBroadcast(myIntent);

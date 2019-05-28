@@ -111,13 +111,11 @@ return ros;
 
     public List<constants> getalldata() {
         List<constants> alarmlist = new ArrayList<constants>();
-        // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_NAME;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
                 constants constants1= new constants();
@@ -131,14 +129,10 @@ return ros;
                 constants1.setNo_shake(cursor.getString(7));
                 constants1.setDiff_math(cursor.getString(8));
                 constants1.setNo_MATH(cursor.getString(9));
-
-
-                // Adding contact to list
                 alarmlist.add(constants1);
             } while (cursor.moveToNext());
         }
-cursor.close();
-        // return contact list
+                cursor.close();
         return alarmlist;
     }
 

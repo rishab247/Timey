@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -533,15 +534,22 @@ Toast.makeText(getApplicationContext(),"alarmset",Toast.LENGTH_SHORT).show();
     int minute1  = Integer.parseInt(hour);
     calendar.set(Calendar.HOUR_OF_DAY, hour1);
     calendar.set(Calendar.MINUTE, minute1);
-
     myIntent.putExtra("extra", "yes");
     myIntent.putExtra("tone", getDataTone());
     myIntent.putExtra("mode", Data1.mode);
     myIntent.putExtra("lable", dataLabel);
+    myIntent.putExtra("noofshake", datanoofshakes);
+    myIntent.putExtra("datanoofmath", datanoofmath);
+    myIntent.putExtra("datadiffmath", datadiffmath);
+    myIntent.putExtra("time", dataHours+dataMintune);
 
-    pending_intent = PendingIntent.getBroadcast(MenuActivity.this, 2, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+    final int code = Integer.valueOf(dataHours+dataMintune);
 
-    alarmManager.set(AlarmManager.RTC_WAKEUP, 5000, pending_intent);
+
+
+    pending_intent = PendingIntent.getBroadcast(MenuActivity.this, code, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending_intent);
 
 
 }
