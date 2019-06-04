@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -17,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -537,7 +535,6 @@ void setalarm(){
 
     final int code = Integer.valueOf(dataHours+dataMintune);
 
-Toast.makeText(getApplicationContext(), hour1+"  "+minute1+ calendar.getTimeInMillis(),Toast.LENGTH_SHORT).show();
 
     pending_intent = PendingIntent.getBroadcast(MenuActivity.this, code, myIntent, PendingIntent.FLAG_UPDATE_CURRENT );
 

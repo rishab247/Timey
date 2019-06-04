@@ -5,7 +5,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,7 +63,6 @@ public class customMyAdapter extends SimpleAdapter {
                     code=1200;
                 stopalarm(code);
                 db.deleteTitle(position+1);
-                Toast.makeText(context,Integer.toString(position),Toast.LENGTH_SHORT).show();
                 arrayList.remove(position);
 
                 notifyDataSetChanged();
@@ -82,7 +79,6 @@ public class customMyAdapter extends SimpleAdapter {
                 string = Objects.requireNonNull(string).trim();
 
 
-                Toast.makeText(context,string,Toast.LENGTH_SHORT).show();
             }
         });
 

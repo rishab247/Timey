@@ -3,7 +3,6 @@ package rishab.listview.com.testmyapplication;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import java.util.Objects;
 
@@ -20,7 +19,6 @@ public class AlarmReceiver extends BroadcastReceiver {
             String datadiffmath  =  Objects.requireNonNull(intent.getExtras()).getString("datadiffmath");
 
             String time  =   Objects.requireNonNull(intent.getExtras()).getString("time");
-            Log.e("MyActivity", "In the receiver with 1231232133231231231  " + time);
 
             Intent serviceIntent = new Intent(context,RingtonePlayingService.class);
             serviceIntent.putExtra("extra", state);

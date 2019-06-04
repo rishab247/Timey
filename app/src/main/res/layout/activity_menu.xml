@@ -397,7 +397,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="1dp"
             android:layout_marginRight="1dp"
-            android:background="?attr/colorPrimary"
+            android:background="@color/colorPrimary"
             android:text="BACK"
             android:textColor="#fff"
             app:layout_constraintBaseline_toBaselineOf="@+id/setsave"
