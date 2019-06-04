@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="setting"
+        android:id="@+id/setting">
+        <menu>
+            <item
+                android:id="@+id/Theme"
+                android:title="Theme"
+                />
+            <item
+                android:title="time 24 hour"
+                android:id="@+id/time24"
+                android:orderInCategory="5"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/snooze"
+                android:title="snooze"
+                android:orderInCategory="5"
+                android:checkable="true"
+                />
+        </menu>
+    </item>
+    <item
+        android:title="about"
+        android:id="@+id/about" />
+
+</menu>

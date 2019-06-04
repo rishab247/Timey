@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.sdsmdg.harjot.crollerTest.Croller
+        android:id="@+id/croller"
+        android:layout_width="0dp"
+        android:layout_height="395dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        app:back_circle_color="#EDEDED"
+        app:indicator_color="#0B3C49"
+        app:indicator_width="10"
+        app:is_continuous="true"
+        app:label_color="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:main_circle_color="#FFFFFF"
+        app:max="1000"
+        app:progress_primary_color="#0B3C49"
+        app:progress_secondary_color="#EEEEEE"
+        app:start_offset="45" />
+
+    <TextView
+        android:id="@+id/crollertext1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="52dp"
+        android:text="00"
+        android:textColor="#000"
+        android:gravity="top|center"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/crollertext2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="134dp"
+        android:text="00"
+        android:textColor="#000"
+        android:gravity="top|center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/crollertext1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="14dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="3dp"
+        android:text=":"
+        android:textColor="#000"
+        android:textSize="40sp"
+        android:textStyle="bold"
+
+
+        app:layout_constraintEnd_toStartOf="@+id/crollertext2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/crollertext1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/crollerbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_states"
+        android:text="Hours"
+        android:textColor="#000"
+        app:layout_constraintBottom_toBottomOf="@+id/croller"
+        app:layout_constraintEnd_toEndOf="@+id/croller"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/croller" />
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:divider="?android:dividerHorizontal"
+        android:showDividers="middle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/crollerback"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="BACK"
+            android:textColor="#fff" />
+
+
+        <Button
+            android:id="@+id/crollersave"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="SAVE"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
