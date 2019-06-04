@@ -75,8 +75,10 @@ public class databasehandler extends SQLiteOpenHelper {
         cursor.close();
         return count;
     }
-    public boolean deleteTitle(String id){SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME, KEY_ID + "=" + id    , null) > 0;
+    public boolean deleteTitle(int  id){SQLiteDatabase db = this.getWritableDatabase();
+       boolean a= db.delete(TABLE_NAME, KEY_ID + "=" + id    , null) > 0;
+       db.execSQL(" UPDATE "+TABLE_NAME+" SET "+KEY_ID+" = "+KEY_ID +"-"+ 1 +" WHERE "+KEY_ID +">"+ id );
+       return a;
     }
     public  boolean updatedata(String id,String hours ,String minutes,String repeatingday,String label,String tone,String mode,String noshake,String diffmath,String noofmath){
 
@@ -155,5 +157,6 @@ return ros;
         return db.update(TABLE_NAME, contentValues, KEY_ID + " = ?",
                 new String[] { String.valueOf(id) });
     }
+
 }
 

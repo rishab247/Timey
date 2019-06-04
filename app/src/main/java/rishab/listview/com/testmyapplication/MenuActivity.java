@@ -5,16 +5,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Color;
 import android.media.MediaPlayer;
-import android.provider.CalendarContract;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +21,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -352,7 +347,6 @@ void cardanimation(){
                     cardView4.setElevation(5);
                 }
             },100);
-                Toast.makeText(getApplicationContext(),getDataTone(),Toast.LENGTH_LONG).show();
 
         }
     });
@@ -481,7 +475,6 @@ void cardanimation(){
 }
 void savedata(){
         setalarm();
-    Toast.makeText(getApplicationContext(),Data1.mode,Toast.LENGTH_SHORT).show();
        db.insertdata(getDataHours(),getDataMintune(),getDataRepeat_days(),getDataLabel(),getDataTone(),getDataMode(),getDatanoofshakes(),getDatadiffmath(),getDatanoofmath());
        db.close();
         refresh();
@@ -510,20 +503,17 @@ void refresh (){
 }
 
 
-
 void setalarm(){
 
 
     this.context = this;
-Toast.makeText(getApplicationContext(),"alarmset",Toast.LENGTH_SHORT).show();
 
-    final Intent myIntent = new Intent(this.context, AlarmReceiver.class);
+    final Intent myIntent = new Intent(this, AlarmReceiver.class);
 
     alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
+
     final Calendar calendar = Calendar.getInstance();
-    calendar.add(Calendar.SECOND, 3);
-    //setAlarmText("You clicked a button");
 
     final String hour = getDataHours();
     final String minute = getDataMintune();
@@ -531,9 +521,11 @@ Toast.makeText(getApplicationContext(),"alarmset",Toast.LENGTH_SHORT).show();
     Log.e("MyActivity", "In the receiver withutuo " + hour + " and " + minute+"  "+getDataTone());
 
     int hour1  = Integer.parseInt(hour);
-    int minute1  = Integer.parseInt(hour);
+    int minute1  = Integer.parseInt(minute);
     calendar.set(Calendar.HOUR_OF_DAY, hour1);
     calendar.set(Calendar.MINUTE, minute1);
+    calendar.set(Calendar.SECOND, 0);
+
     myIntent.putExtra("extra", "yes");
     myIntent.putExtra("tone", getDataTone());
     myIntent.putExtra("mode", Data1.mode);
@@ -545,11 +537,11 @@ Toast.makeText(getApplicationContext(),"alarmset",Toast.LENGTH_SHORT).show();
 
     final int code = Integer.valueOf(dataHours+dataMintune);
 
+Toast.makeText(getApplicationContext(), hour1+"  "+minute1+ calendar.getTimeInMillis(),Toast.LENGTH_SHORT).show();
 
+    pending_intent = PendingIntent.getBroadcast(MenuActivity.this, code, myIntent, PendingIntent.FLAG_UPDATE_CURRENT );
 
-    pending_intent = PendingIntent.getBroadcast(MenuActivity.this, code, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending_intent);
+    alarmManager.set(AlarmManager.RTC_WAKEUP,  calendar.getTimeInMillis(), pending_intent);
 
 
 }

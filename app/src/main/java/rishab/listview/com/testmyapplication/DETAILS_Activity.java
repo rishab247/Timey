@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,9 +19,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -75,6 +71,15 @@ databasehandler db;
                 startActivity(intent);
             }
         });
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent=new  Intent(DETAILS_Activity.this, location.class);
+
+                startActivity(intent);
+            }
+        });
          ListView listView = findViewById(R.id.recycler);
         db = new databasehandler(this);
         Cursor cursor = db.getdata();
@@ -82,6 +87,7 @@ databasehandler db;
             while(cursor.moveToNext()){
                 HashMap<String, String> hashMap = new HashMap<>();//create a hashmap to store the data in key value pair
                 hashMap.put("time", cursor.getString(1)+":"+cursor.getString(2));
+                hashMap.put("code", cursor.getString(1)+cursor.getString(2));
                 hashMap.put("repeat", cursor.getString(3));
                 hashMap.put("lable", cursor.getString(4));
                 arrayList.add(hashMap);//add the hashmap into arrayList
@@ -91,7 +97,7 @@ databasehandler db;
         final customMyAdapter simpleAdapter = new customMyAdapter(this, arrayList, R.layout.details_row, from, to);//Create object and set the parameters for simpleAdapter
         listView.setAdapter(simpleAdapter);//sets the adapter for listView
 
-
+db.close();
 
 
     }
@@ -137,49 +143,49 @@ databasehandler db;
                 imageview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(),"imageview 1",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Coming Soon....",Toast.LENGTH_SHORT).show();
                     }
                 });
                 imageView2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(),"imageview 2",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Coming Soon....",Toast.LENGTH_SHORT).show();
                     }
                 });
                 imageView3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(),"imageview 3",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Coming Soon....",Toast.LENGTH_SHORT).show();
                     }
                 });
                 imageView4.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(),"imageview 4",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Coming Soon....",Toast.LENGTH_SHORT).show();
                     }
                 });
                 imageView5.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(),"imageview 5",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Coming Soon....",Toast.LENGTH_SHORT).show();
                     }
                 });
                 imageView6.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(),"imageview 6",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Coming Soon....",Toast.LENGTH_SHORT).show();
                     }
                 });
                 imageView7.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(),"imageview 7",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Coming Soon....",Toast.LENGTH_SHORT).show();
                     }
                 });
                 imageView8.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(),"imageview 8",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Coming Soon....",Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setView(dialogView);

@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import rishab.listview.com.testmyapplication.database.databasehandler;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,16 +20,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mydb=new databasehandler(this);
-
-            but = findViewById(R.id.button12);
-        but.setOnClickListener(new View.OnClickListener() {
+        new Timer().schedule(new TimerTask() {
             @Override
-            public void onClick(View v) {
+            public void run() {
                 Intent intent=new  Intent(MainActivity.this, DETAILS_Activity.class);
                 startActivity(intent);
-
             }
-        });
+        },1000);
 
     }
 }

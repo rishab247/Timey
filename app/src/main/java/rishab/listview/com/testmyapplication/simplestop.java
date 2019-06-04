@@ -23,6 +23,8 @@ public class simplestop extends AppCompatActivity {
         setContentView(R.layout.activity_simplestop);
 
         String time  =  Objects.requireNonNull(getIntent().getExtras()).getString("time");
+        if (time==null)
+            time = "1200";
         final int code = Integer.valueOf(time);
 
              lable = getIntent().getExtras().getString("lable");
@@ -31,7 +33,7 @@ public class simplestop extends AppCompatActivity {
         txtlable.setText(lable);
         final Intent myIntent = new Intent(this, AlarmReceiver.class);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        final ProSwipeButton proSwipeBtn = (ProSwipeButton) findViewById(R.id.proswipebutton_main_error);
+        final ProSwipeButton proSwipeBtn = findViewById(R.id.proswipebutton_main_error);
         proSwipeBtn.setSwipeDistance(0.1f);
         proSwipeBtn.setOnSwipeListener(new ProSwipeButton.OnSwipeListener() {
             @Override
@@ -41,7 +43,7 @@ public class simplestop extends AppCompatActivity {
                     @Override
                     public void run() {
                         proSwipeBtn.showResultIcon(true);
-                        pending_intent = PendingIntent.getBroadcast(simplestop.this,code, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        pending_intent = PendingIntent.getBroadcast(simplestop.this,code, myIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
                         myIntent.putExtra("extra", "no");
                         sendBroadcast(myIntent);

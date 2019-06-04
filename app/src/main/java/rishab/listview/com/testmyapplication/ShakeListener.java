@@ -23,7 +23,7 @@ public class ShakeListener implements SensorListener
 
     public interface OnShakeListener
     {
-        public void onShake();
+        void onShake();
     }
 
     public ShakeListener(Context context)
@@ -32,17 +32,17 @@ public class ShakeListener implements SensorListener
         resume();
     }
 
-    public void setOnShakeListener(OnShakeListener listener)
+     void setOnShakeListener(OnShakeListener listener)
     {
         mShakeListener = listener;
     }
 
-    public void resume() {
+    void resume() {
         mSensorMgr = (SensorManager)mContext.getSystemService(Context.SENSOR_SERVICE);
         if (mSensorMgr == null) {
             throw new UnsupportedOperationException("Sensors not supported");
         }
-        boolean supported = mSensorMgr.registerListener((SensorListener) this, SensorManager.SENSOR_ACCELEROMETER, SensorManager.SENSOR_DELAY_GAME);
+        boolean supported = mSensorMgr.registerListener(this, SensorManager.SENSOR_ACCELEROMETER, SensorManager.SENSOR_DELAY_GAME);
         if (!supported) {
             mSensorMgr.unregisterListener(this, SensorManager.SENSOR_ACCELEROMETER);
             throw new UnsupportedOperationException("Accelerometer not supported");

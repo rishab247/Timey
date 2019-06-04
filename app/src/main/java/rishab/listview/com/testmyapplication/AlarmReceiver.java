@@ -20,7 +20,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             String datadiffmath  =  Objects.requireNonNull(intent.getExtras()).getString("datadiffmath");
 
             String time  =   Objects.requireNonNull(intent.getExtras()).getString("time");
-            Log.e("MyActivity", "In the receiver with   " + time);
+            Log.e("MyActivity", "In the receiver with 1231232133231231231  " + time);
 
             Intent serviceIntent = new Intent(context,RingtonePlayingService.class);
             serviceIntent.putExtra("extra", state);
