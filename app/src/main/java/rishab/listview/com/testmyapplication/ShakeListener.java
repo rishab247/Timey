@@ -76,6 +76,7 @@ public class ShakeListener implements SensorListener
                     mShakeCount = 0;
                     if (mShakeListener != null) {
                         mShakeListener.onShake();
+
                     }
                 }
                 mLastForce = now;
