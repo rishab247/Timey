@@ -7,18 +7,18 @@
 
     <application
         android:allowBackup="true"
-        android:fullBackupContent="@xml/backup_descriptor"
-        android:icon="@mipmap/nologo"
+         android:icon="@mipmap/nologo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".location"></activity>
+        <activity android:name=".location" />
         <activity
             android:name=".simplestop"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".mathstop"
             android:screenOrientation="portrait"
@@ -32,8 +32,11 @@
         <activity android:name=".math_activity" />
         <activity
             android:name=".DETAILS_Activity"
+android:windowSoftInputMode="adjustUnspecified"
+            android:colorMode="hdr"
             android:label="@string/title_activity_details_"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
         <activity
             android:name=".MenuActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

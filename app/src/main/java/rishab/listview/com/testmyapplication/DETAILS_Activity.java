@@ -94,7 +94,7 @@ databasehandler db;
             }
         String[] from = {"time", "lable"};
         int[] to = {R.id.detailssettime, R.id.detailstitle};//int array of views id's
-        final customMyAdapter simpleAdapter = new customMyAdapter(this, arrayList, R.layout.details_row, from, to);//Create object and set the parameters for simpleAdapter
+        final customMyAdapter simpleAdapter = new customMyAdapter(this, arrayList, R.layout.details_row, from, to,db);//Create object and set the parameters for simpleAdapter
         listView.setAdapter(simpleAdapter);//sets the adapter for listView
 
 db.close();
